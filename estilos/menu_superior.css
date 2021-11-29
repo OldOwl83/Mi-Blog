@@ -1,0 +1,32 @@
+#menu_superior
+{
+    float: right;
+    display: flex;
+    justify-content: flex-end;
+    width: 78%;
+
+    border: 1px solid var(--bordes_suaves_clr);
+    background-color: #9c50e8;
+}
+
+.botones_seccion
+{
+    float: left;
+    padding: 10px;
+    box-sizing: border-box;
+
+    font-family: 'Comfortaa Bold', cursive;
+    font-size: 90%;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+
+    border-left: 1px solid var(--bordes_suaves_clr);
+}
+
+.botones_seccion:hover
+{
+    background-color: #8a3ed6;
+}

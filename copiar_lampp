@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cp -Rup ./ /opt/lampp/htdocs/mdm

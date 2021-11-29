@@ -1,0 +1,73 @@
+@font-face
+{
+        font-family: 'Comfortaa Bold';
+        src: url('../fuentes/Comfortaa-Bold.ttf');
+}
+
+@font-face
+{
+    font-family: 'Comfortaa Regular';
+    src: url('../fuentes/Comfortaa-Regular.ttf');
+}
+
+:root
+{
+    --fondo_claro_clr: #ffefcf;
+    --detalles_fondo_claro: #eebf7f;
+    --fondo_oscuro_clr: orange;
+    --detalles_1_clr: #8c00d8; /*violeta*/
+    --detalles_2_clr: orangered; /*naranja*/
+    --bordes_suaves_clr: #999; /*gris*/
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    text-decoration: none;
+}
+
+html
+{
+    background-color: #666;
+}
+
+body
+{
+    position: relative;
+
+    width: 80%;
+    min-height: 660px;
+    margin: auto;
+
+    background-color: var(--fondo_claro_clr);
+}
+
+header
+{
+    height: 110px;
+    padding-top: 40px;
+
+    background-color: #9955ff99;
+    border: 1px solid var(--bordes_suaves_clr);
+}
+
+header img
+{
+    display: block;
+    margin: 0 auto;
+    width: 94%;
+}
+
+h1
+{
+    margin-left: 60px;
+    font-family: 'Comfortaa Bold', cursive;
+    font-size: 280%;
+}
+
+#contenedor_princ
+{
+    margin: 80px 4% 10px 22%;
+}

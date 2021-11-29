@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html lang="es" dir="ltr">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="author" content="Mauro Donnantuoni Moratto">
+        <meta name="description" content="Blog personal de programación informática en diversos lenguajes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="shortcut icon" href="" type="image/x-icon">
+
+        <title>MDM Programación</title>
+
+        <link rel="stylesheet" href="estilos/generales.css" type="text/css">
+        <link rel="stylesheet" href="estilos/menu_lateral.css" type="text/css">
+        <link rel="stylesheet" href="estilos/menu_superior.css" type="text/css">
+        <link rel="stylesheet" href="estilos/footer.css" type="text/css">
+
+        <script type="text/javascript" src="js/filtros_menu.js" defer></script>
+        <script type="text/javascript" src="js/inserta_entrada.js"></script>
+
+    </head>
+
+    <body>
+
+        <header>
+
+            <h1>Código MDM</h1>
+            <img src="imagenes/linea_enc.png" alt="">
+        </header>
+
+        <nav id="menu_lateral">
+
+            <div id="cont_filtros">
+                <h4 id="tit_filtro">Organizar por...</h4>
+                <select id="filtros">
+                    <option value="Lenguajes">Lenguaje/Stack</option>
+                    <option value="Categoria">Categoría</option>
+                    <option value="Complejidad">Complejidad</option>
+                </select>
+            </div>
+
+            <div id="zona_etiquetas">
+
+            </div>
+
+        </nav>
+
+        <nav id="menu_superior">
+            <div id="boton_articulos" class="botones_seccion"><p>Artículos</p></div>
+            <div id="boton_sobre" class="botones_seccion" onclick="Inserta_entrada('secciones/acerca_de.htm')"><p>Sobre este blog</p></div>
+            <div id="boton_contacto" class="botones_seccion" onclick="Inserta_entrada('secciones/contacto.htm')"><p>Contacto</p></div>
+        </nav>
+
+        <main>
+
+            <div id="contenedor_princ">
+
+            </div>
+
+        </main>
+
+        <footer>
+
+            <ul id="footer_data">
+                <li>© 2021 Mauro Donnantuoni Moratto</li>
+                <li><a href="https://github.com/OldOwl83">GitHub: OldOwl83</a></li>
+                <li>MDM Programación</li>
+            </ul>
+            <p id=slogan></p>
+            <img src="imagenes/developed.png" id="developed" draggable="false" />
+
+        </footer>
+    </body>
+</html>
