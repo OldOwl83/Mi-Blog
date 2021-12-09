@@ -1,12 +1,20 @@
-<h2>Buzón de mensajes</h2>
+<h3>Buzón de mensajes</h3>
 
-<p>Me gusta conversar y aprender sobre programación e informática. Te agradeceré cualquier comentario constructivo, sugerencia o inquietud que quieras compartir conmigo.</p>
+<p class="publicaciones">Me gusta conversar y aprender sobre programación e informática. Te agradeceré cualquier comentario constructivo, sugerencia o inquietud que quieras compartir conmigo.</p>
 
-<form id="form_contacto" action="../backend/buzon_msg.php" method="post">
+<form id="form_contacto" action="backend/buzon_msg.php" method="post" target="_self">
+
     <input type="text" name="nombre" value="" placeholder="Nombre...">
 
-    <input type="email" name="casilla" value="" placeholder="Correo electrónico...">
-    <p>Esta casilla sólo será utilizada para responder de manera personalizada los mensajes recibidos mediante este formulario. No envío publicidad, ni newsletters, ni cadenas de ningún tipo.</p>
+    <div id="cont_email">
 
-    <textarea name="mensaje" rows="8" cols="50">Mensaje...</textarea>
+        <input type="email" name="casilla" placeholder="Correo electrónico..." required>
+        <p id="aclaracion">Esta casilla sólo será utilizada para responder de manera personalizada los mensajes recibidos mediante este formulario. No envío publicidad, ni newsletters, ni cadenas de ningún tipo.</p>
+
+    </div>
+
+    <textarea name="mensaje" rows="8" cols="" placeholder="Mensaje..."></textarea>
+
+    <input type="button" value="Enviar" onclick="Enviar_mensaje();">
+
 </form>

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+
+        <meta charset="UTF-8">
+
+        <meta name="author" content="Mauro Donnantuoni Moratto"/>
+        <meta name="description" content="Ejercicio de programación que reproduce una calculadora de mesa">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Calculín</title>
+
+        <link rel="stylesheet" href="estilos_calculin.css" type="text/css">
+
+        <script src="calculin.js" type="text/javascript" defer></script>
+
+    </head>
+
+    <body>
+        <main>
+            <table>
+                <caption>CALCULÍN</caption>
+
+                <tr>
+                    <td colspan="4"><input type="text" id="visor" disabled="true" /></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="C" id="reset" onclick="Reset()" /></td>
+                    <td class="invisible"></td><td class="invisible"></td>
+                    <td><input type="button" value="+" onclick="Operaciones('+')" /></td>
+                </tr>
+
+                <tr>
+                    <td><input type="button" value="1" class="nums" onclick="Ingreso_numero(1)" /></td>
+                    <td><input type="button" value="2" class="nums" onclick="Ingreso_numero(2)" /></td>
+                    <td><input type="button" value="3" class="nums" onclick="Ingreso_numero(3)" /></td>
+                    <td><input type="button" value="-" onclick="Operaciones('-')" /></td>
+                </tr>
+
+                <tr>
+                    <td><input type="button" value="4" class="nums" onclick="Ingreso_numero(4)" /></td>
+                    <td><input type="button" value="5" class="nums" onclick="Ingreso_numero(5)" /></td>
+                    <td><input type="button" value="6" class="nums" onclick="Ingreso_numero(6)" /></td>
+                    <td><input type="button" value="*" onclick="Operaciones('*')" /></td>
+                </tr>
+
+                <tr>
+                    <td><input type="button" value="7" class="nums" onclick="Ingreso_numero(7)" /></td>
+                    <td><input type="button" value="8" class="nums" onclick="Ingreso_numero(8)" /></td>
+                    <td><input type="button" value="9" class="nums" onclick="Ingreso_numero(9)" /></td>
+                    <td><input type="button" value="/" onclick="Operaciones('/')" /></td>
+
+                </tr>
+
+                <tr>
+                    <td><input type="button" value="0" class="nums" onclick="Ingreso_numero(0)" /></td>
+                    <td><input type="button" value="." class="nums" onclick="Ingreso_numero('.')" /></td>
+                    <td colspan="2"> <input type="button" value="=" id="igual" onclick="Operaciones('=')" /></td>
+
+                </tr>
+
+            </table>
+        </main>
+        <footer>
+
+            <ul id="footer_data">
+                <li>© 2021 Mauro Donnantuoni Moratto</li>
+                <li><a href="https://github.com/OldOwl83">GitHub: OldOwl83</a></li>
+                <li>MDM Programación</li>
+            </ul>
+            <p id=slogan></p>
+            <img src="developed.png" id="developed" draggable="false" />
+
+        </footer>
+
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<div class="fichas_t">
+    <h5><span class="material-icons">assignment</span> FICHA TÉCNICA</h5>
+    <ul>
+        <li><span class="subtitulos">Nombre</span>: Calculín</li>
+        <li><span class="subtitulos">Período de desarrollo</span>: diciembre 2020</li>
+        <li><span class="subtitulos">Stack</span>: HTML5</li>
+        <li><span class="subtitulos">Categoría</span>: Calculadora de escritorio</li>
+        <li><span class="subtitulos">Implementaciones destacadas</span>: <em>eventListeners</em> del ratón y del teclado, definición de funciones en Javascript, estilos CSS</li>
+        <li><a href="sitios/Calculin/index.html" target="_blank"><span class="material-icons">arrow_forward</span> Ir a la página del juego</a></li>
+        <li><a href="https://github.com/OldOwl83/Calculin" target="_blank"><span class="material-icons">arrow_forward</span> Ir al código</a></li>
+    </ul>
+</div>
+
+<h3>Calculín</h3>
+
+<h4>Presentación</h4>
+
+ <p class="publicaciones">"Calculín" reproduce una calculadora de mesa básica, que puede ser manipulada tanto con el ratón como con el teclado. Desde el punto de vista del código, este programa no presenta demasiada complejidad ni dificultades especiales. Simplemente, fue un ejercicio con el que hice mis primeras armas en HTML5, definiendo funciones para la escucha de eventos y estilizando los elementos del DOM con CSS. En tono con su simpleza, creo que las virtudes de este programa radican en la legibilidad, economía y limpieza del código JavaScript, y en no haber desatendido detalles de remota importancia, como la expresión en notación científica de las cifras que no caben en el visor de la calculadora, el tratamiento de los números negativos como tales -y no como simples restas- o la correcta visualización de los números con coma.</p>
+
+ <p class="publicaciones">Una observación que podría hacerse al diseño HTML de la calculadora es que sus elementos están encuadrados dentro de un elemento "&lttable&gt", lo cual está desaconsejado en la actualidad. En desarrollos posteriores, como la "Batalla Naval" o el "BuscaBombas", he profundizado en técnicas más modernas, como el manejo con CSS del "grid" de la propiedad "display".</p>
+
+<h4>Comportamiento de la calculadora</h4>
+
+<p class="publicaciones">Su comportamiento es líneal y secuencial. Ello quiere decir que el orden de precedencia de las operaciones no es el convencional, sino que sigue el orden cronológico en que
+
+    <span class="imagenes" id="imagen_calculin"><img src="imagenes/Calculin/calculin.png" alt="">Vista de Calculín</span>
+
+    los operadores van siendo ingresados. Éstos, de hecho, además de introducir la operación que representan, arrojan el acumulado de las operaciones previas; con lo cual no es posible preparar ecuaciones de varios niveles de profundidad.</p>
+
+<p class="publicaciones">Un detalle a tener en cuenta es el tratamiento diferencial que recibe el operador "-" (resta) cuando sucede inmediatamente a otro operador o se ingresa al comienzo de una ecuación. En estos casos, en vez de anular la operación anterior (lo que sí hacen los otros operadores), o de preparar una resta, lo que hace es introducir un número negativo. De tal suerte, por ejemplo, si se ingresa la secuencia "-5*-5", el resultado no será "-10", sino "25". En cambio, si por contrapartida se ingresara "5*+5", el resultado sería "10", porque el operador "+" anularía la operación representada por "*", tal como sucede en las calculadoras de mesa tradicionales.</p>

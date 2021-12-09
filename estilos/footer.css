@@ -1,8 +1,5 @@
 footer
 {
-    position: absolute;
-    bottom: 0;
-
     width: 100%;
     margin: 40px auto 0;
     padding: 3px;
@@ -13,7 +10,8 @@ footer
     justify-content: space-around;
 
     font-family: 'Cantarell', sans-serif;
-    font-size: 14px;
+    font-size: 80%;
+    user-select: none;
 
     background-color: #222;
 
@@ -31,7 +29,6 @@ footer
     margin: 4px 12px;
 
     list-style: none;
-    user-select: text;
 }
 
 #footer_data a

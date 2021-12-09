@@ -3,10 +3,13 @@
 #menu_lateral
 {
     float: left;
+    position: sticky;
+    top: 40px;
     display: block;
     width: 16%;
     margin-top: 10px;
     box-sizing: border-box;
+    z-index: 1;
 
 }
 
@@ -18,6 +21,7 @@
 #tit_filtro
 {
     text-align: center;
+    font-size: 100%;
 }
 
 #filtros
@@ -96,6 +100,7 @@
     position: absolute;
     top: -1px;
     left: 100%;
+    z-index: 1;
 
     display: none;
     width: 100%;

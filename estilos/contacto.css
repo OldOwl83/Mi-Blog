@@ -1,0 +1,44 @@
+#form_contacto input, #form_contacto textarea
+{
+    padding: 2px 8px;
+}
+
+#form_contacto input[type="text"]
+{
+    width: 40%;
+    margin: 26px 50px 0;
+}
+
+#cont_email
+{
+    width: 60%;
+    margin: 20px 50px 0;
+}
+
+#form_contacto input[type="email"]
+{
+    width: 100%;
+}
+
+#aclaracion
+{
+    margin-top: 3px;
+    font-family: 'Arial', sans-serif;
+    font-size: 70%;
+    text-align: justify;
+}
+
+#form_contacto textarea
+{
+    width: 52%;
+    margin: 20px 50px 0;
+}
+
+#form_contacto input[type="submit"]
+{
+    display: block;
+    width: 12%;
+    margin: 20px 50px;
+    padding: 7px 10px;
+
+}

@@ -1,0 +1,34 @@
+#versiones_batalla
+{
+    width: 40%;
+}
+
+#salida_pseint
+{
+    width: 45%;
+    float: left;
+}
+
+#tablero_batalla
+{
+    width: 28%;
+    float: left;
+}
+
+#wait_batalla
+{
+    width: 50%;
+    float: right;
+}
+
+#batalla_completa
+{
+    width: 60%;
+    float: right;
+}
+
+#panel_batalla
+{
+    width: 40%;
+    float: right;
+}

@@ -10,15 +10,28 @@
 
         <link rel="shortcut icon" href="" type="image/x-icon">
 
-        <title>MDM Programación</title>
+        <title>¡Hola Código!</title>
 
         <link rel="stylesheet" href="estilos/generales.css" type="text/css">
         <link rel="stylesheet" href="estilos/menu_lateral.css" type="text/css">
         <link rel="stylesheet" href="estilos/menu_superior.css" type="text/css">
         <link rel="stylesheet" href="estilos/footer.css" type="text/css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+        <link rel="stylesheet" href="estilos/gral_publicaciones.css" type="text/css">
+        <link rel="stylesheet" href="estilos/contacto.css" type="text/css">
+        <link rel="stylesheet" href="estilos/acerca_de.css" type="text/css">
+        <link rel="stylesheet" href="estilos/batalla_naval.css" type="text/css">
+        <link rel="stylesheet" href="estilos/buscabombas.css" type="text/css">
+        <link rel="stylesheet" href="estilos/calculin.css" type="text/css">
+        <link rel="stylesheet" href="estilos/black_jack.css" type="text/css">
 
         <script type="text/javascript" src="js/filtros_menu.js" defer></script>
         <script type="text/javascript" src="js/inserta_entrada.js"></script>
+        <script type="text/javascript" src="js/envio_mensajes.js"></script>
+        <!-- <script type="text/javascript" src="sitios/BuscaBombas/clase_Buscabombas.js"></script>
+        <script type="text/javascript" src="js/insertar_buscabombas.js"></script> -->
+<!-- <script type="text/javascript" src="js/pruebas_offline.js" defer></script> -->
 
     </head>
 
@@ -26,18 +39,22 @@
 
         <header>
 
-            <h1>Código MDM</h1>
+            <h1>Hello Code!</h1>
+            <h2>Escribí tu código, escribí tu mundo...</h2>
             <img src="imagenes/linea_enc.png" alt="">
         </header>
 
         <nav id="menu_lateral">
 
             <div id="cont_filtros">
-                <h4 id="tit_filtro">Organizar por...</h4>
-                <select id="filtros">
-                    <option value="Lenguajes">Lenguaje/Stack</option>
-                    <option value="Categoria">Categoría</option>
-                    <option value="Complejidad">Complejidad</option>
+                <h5 id="tit_filtro">Organizar por...</h5>
+
+                <!-- Los values de "filtros" deben corresponder a la columna en que aparecen las etiquetas en el array "entradas" de la función "Filtrado_entradas" -->
+                <select id="filtros" onclick="Filtrado_entradas(this.value);">
+                    <option value="2">Lenguaje/Stack</option>
+                    <option value="3">Categoría</option>
+                    <option value="4">Complejidad</option>
+                    <option value="5">Implementaciones</option>
                 </select>
             </div>
 
@@ -48,14 +65,32 @@
         </nav>
 
         <nav id="menu_superior">
-            <div id="boton_articulos" class="botones_seccion"><p>Artículos</p></div>
+
             <div id="boton_sobre" class="botones_seccion" onclick="Inserta_entrada('secciones/acerca_de.htm')"><p>Sobre este blog</p></div>
+
+            <div id="boton_articulos" class="botones_seccion">
+
+                <p>Artículos</p>
+
+                <div id="cont_artic">
+
+                    <div class="articulos" onclick="Inserta_entrada()"><p>Escribí tu código, escribí tu mundo...</p></div>
+
+                    <div class="articulos" onclick="Inserta_entrada()"><p>El <em>software</em> como segunda naturaleza</p></div>
+
+                    <div class="articulos" onclick="Inserta_entrada()"><p>El código como representación de la libertad humana</p></div>
+
+                </div>
+            </div>
+
             <div id="boton_contacto" class="botones_seccion" onclick="Inserta_entrada('secciones/contacto.htm')"><p>Contacto</p></div>
         </nav>
 
         <main>
 
             <div id="contenedor_princ">
+
+
 
             </div>
 
@@ -68,7 +103,7 @@
                 <li><a href="https://github.com/OldOwl83">GitHub: OldOwl83</a></li>
                 <li>MDM Programación</li>
             </ul>
-            <p id=slogan></p>
+            <p id=slogan>El mundo es un código que siempre puede reescribirse.</p>
             <img src="imagenes/developed.png" id="developed" draggable="false" />
 
         </footer>

@@ -1,0 +1,45 @@
+#ul_bj
+{
+    margin-top: 40px;
+    margin-left: 60px;
+}
+
+#versiones_random_c
+{
+    width: 46%;
+}
+
+#portada_bj
+{
+    width: 44%;
+
+    float: right;
+}
+
+#inicio_mano_bj
+{
+    width: 40%;
+
+    float: left;
+}
+
+#salon_bj
+{
+    width: 46%;
+
+    float: right;
+}
+
+#random_bj
+{
+    width: 70%;
+
+    float: right;
+}
+
+#mano_ganada_bj
+{
+    width: 60%;
+
+    float: left;
+}

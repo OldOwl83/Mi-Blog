@@ -12,11 +12,11 @@
 .botones_seccion
 {
     float: left;
-    padding: 10px;
+    padding: 10px 20px;
     box-sizing: border-box;
 
     font-family: 'Comfortaa Bold', cursive;
-    font-size: 90%;
+    font-size: 94%;
     color: white;
     text-shadow: 1px 1px 1px black;
     text-align: center;
@@ -28,5 +28,52 @@
 
 .botones_seccion:hover
 {
-    background-color: #8a3ed6;
+    background-color: #8c40d8;
+}
+
+#boton_articulos
+{
+    position: relative;
+}
+
+#cont_artic
+{
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 1;
+
+    width: 220%;
+
+    border: 1px groove var(--bordes_suaves_clr);
+    border-bottom: none;
+
+    background-color: white;
+}
+
+#boton_articulos:hover #cont_artic
+{
+    display: block;
+}
+
+.articulos
+{
+    width: 100%;
+    padding: 8px 18px;
+    box-sizing: border-box;
+
+    font-family: 'Cantarell', sans-serif;
+    font-size: 100%;
+    color: black;
+    text-shadow: none;
+    user-select: none;
+    cursor: pointer;
+
+    border-bottom: 1px groove var(--bordes_suaves_clr);
+}
+
+.articulos:hover
+{
+    background-color: #ddd;
 }

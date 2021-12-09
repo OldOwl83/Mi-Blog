@@ -1,6 +1,69 @@
-<h2>Batalla Naval</h2>
-<h3>Presentación</h3>
-<p></p>
-<h3>Características del juego</h3>
-<p>Este programa se basa en una versión clásica del tradicional juego de mesa. Ello implica una menor flexibilidad a la hora de distribuir las flotas sobre los tableros, ya que los barcos no pueden ocupar posiciones adyacentes a otros. Esta vieja regla -en desuso en la mayoría de las implementaciones que pueden encontrarse en la web- ofrece, en mi opinión, dos aportes interesantes: en primer lugar, desde el punto de vista de la dinámica del juego, introduce una cierta lógica a la hora de pensar estrategias de acción, tanto en la distribución de la propia flota, como en el planeamiento del ataque; en segundo lugar, incorpora una dificultad adicional a la programación del motor del juego, ya que es necesario validar las posiciones de los barcos antes del comienzo de las agresiones.</p>
-<p></p>
+<div class="fichas_t">
+    <h5><span class="material-icons">assignment</span> FICHA TÉCNICA</h5>
+    <ul>
+        <li><span class="subtitulos">Nombre</span>: Battle Ship</li>
+        <li><span class="subtitulos">Período de desarrollo</span>: septiembre 2020 - julio 2021</li>
+        <li><span class="subtitulos">Stack</span>: HTML5</li>
+        <li><span class="subtitulos">Categoría</span>: Juego monojugador por turnos</li>
+        <li><span class="subtitulos">Implementaciones destacadas</span>: <em>eventListeners</em>, <em>Drag and Drop API</em>, <em>CSS animations</em></li>
+        <li><a href="sitios/Battle_Ship/index.html" target="_blank"><span class="material-icons">arrow_forward</span> Ir a la página del juego</a></li>
+        <li><a href="https://github.com/OldOwl83/Battle-Ship" target="_blank"><span class="material-icons">arrow_forward</span> Ir al código</a></li>
+    </ul>
+</div>
+
+<h3>Batalla Naval</h3>
+
+<h4>Presentación</h4>
+
+<p class="publicaciones">Este programa es la última versión de un extenso desarrollo que atravesó varias etapas de aprendizaje. Empezó como un "ejercicio por cuenta propia", escrito en pseudo-código sobre PSeInt. Esa primera versión sólo contaba con las funciones de distribución aleatoria de la flota enemiga, la impresión del tablero (en modo texto, por supuesto) y una rudimentaria mecánica de gestión de los disparos contra esa flota; mostraba unos contadores de barcos hundidos, una escueta cartelería de interacción con el usuario y al final la suma de los intentos totales necesarios para destruir la flota enemiga. Más tarde, cuando mis conocimientos de programación fueron mayores, retomé ese código para alcanzar una versión casi completa en C, mejorándola
+
+    <span class="imagenes" id="salida_pseint"><img src="imagenes/Batalla_Naval/salida_pseint.png" alt="">Salida de la Batalla Naval por PSeInt</span>
+
+    sustancialmente en lo que respecta a la modularización y la reutilización de código. Finalmente, cuando ingresé al mundo HTML5, tuve que volver sobre ese código para darle una interactividad más ágil y atractiva. Si bien las grandes innovaciones, en este caso, consistieron en la incorporación de una interfaz gráfica, la detección de los eventos del ratón para disparar a los tableros y el arrastre de los barcos para ubicarlos en los tableros, el código del motor de juego tuvo que ser permanentemente revisado para adaptarlo a las nuevas funcionalidades y para ganar en modularidad, legibilidad y rendimiento. Con todo, las principales funciones diseñadas en la primera versión en pseudo-código se conservaron en esencia, por lo que se puede ver una evolución dentro de una misma familia de códigos.</p>
+
+<div id="cont_details">
+    <details id="versiones_batalla" class="publicaciones">
+        <summary>Versiones previas de la Batalla Naval</summary>
+        <p>* <a href="archivos/Batalla_Naval.psc" download="batalla_naval_hello_code.psc">Descargar versión PSeInt</a></p>
+
+    </details>
+</div>
+
+<h4>Características del juego</h4>
+
+<p class="publicaciones">Esta versión de la "Batalla Naval" está construida sobre HTML5 puro y, por tanto, puede ejecutarse fácilmente en cualquier navegador web. La misma intenta reproducir lo que considero una <em>versión clásica</em> del tradicional juego de mesa. Ello implica una menor flexibilidad a la hora de distribuir las flotas sobre los tableros,
+
+<span class="imagenes" id="tablero_batalla"><img src="imagenes/Batalla_Naval/tablero_propio.png" alt="">Tablero de juego: flota del usuario</span>
+
+    ya que los barcos no pueden ocupar posiciones adyacentes a otros. Esta vieja regla -en desuso en la mayoría de las implementaciones que pueden encontrarse en la web- ofrece, en mi opinión, dos aportes interesantes: en primer lugar, desde el punto de vista de la dinámica del juego, introduce una cierta lógica a la hora de pensar estrategias de acción, tanto en la distribución de la propia flota, como en el planeamiento del ataque; en segundo lugar, representa una dificultad adicional a la programación del motor de juego, ya que es necesario validar las posiciones de los barcos antes del comienzo de las agresiones, teniendo en cuenta una configuración matricial de los tableros.</p>
+<p class="publicaciones">Por otra parte, esta <em>versión clásica</em> implica la colocación de una flota de 15 barcos que ocupa 35 casilleros en total sobre un tablero de 10x10. Ello significa una superpoblación de casillas ocupadas; lo que le da al intercambio de fuego un ritmo bastante vertiginoso. Por contrapartida, el jugador que toma ventaja al comienzo tiene altas chances de resultar ganador si no comete errores graves (como disparar en posiciones prohibidas), lo que vuelve poco probable la emoción de una remontada épica.</p>
+<p class="publicaciones">En esta implementación, el usuario compite siempre contra la máquina, con el objetivo de derribar la flota enemiga antes de que sucumba la propia. El desarrollo del juego es, estrictamente hablando, por turnos. Sin embargo, <strong>la asincronía que permite JavaScript entre el disparo de eventos y la ejecución del código hace que el usuario pueda gatillar a su propio ritmo, y adelantarse a los turnos de la máquina</strong>, regulados por el parpadeo del cartel central, que señala los acontecimientos que se van sucediendo. Esta asincronía me obligó a llevar una cuenta especial de los disparos y aciertos de ambos
+
+<span class="imagenes" id="wait_batalla"><img src="imagenes/Batalla_Naval/wait.png" alt="">Espera hasta que la máquina termine de atacar</span>
+
+     contrincantes, y esperar a la finalización de los turnos de la máquina antes de evaluar el resultado final de la batalla.</p>
+<p class="publicaciones">Se proponen dos métodos para la distribución inicial de la flota propia en el tablero: una manual, en que el usuario debe arrastrar los barcos desde un panel donde están clasificados por tamaño, hacia el tablero de juego, y presionar el botón izquierdo del ratón para cambiar su orientación. Alternativamente, se puede solicitar un ordenamiento aleatorio presionando un botón del panel.</p>
+<p class="publicaciones">Los detalles gráficos insertos en los tableros (barcos y bombazos) fueron creados por mí; lo cual se nota por su rudimentaridad. Sin embargo, las imágenes decorativas, el <em>favicon</em> y todos los sonidos utilizados fueron tomados de páginas de distribución de materiales libres.</p>
+
+<h4>Implementaciones especiales</h4>
+
+<ul class="publicaciones">
+    <li><span class="subtitulos">Clases y objetos</span>: Si bien no puede decirse que el diseño de este juego es <em>orientado a objetos</em>, el mismo se sirve de la definición de una clase "Ship" para mantener la información y el estado de los barcos de cada flota. Cada uno de éstos son representados como objetos particulares en el nivel lógico del código e identificados por su posición en dos vectores que corresponden a cada una de las flotas.</li>
+    <li><span class="subtitulos">Event Listeners</span>: Desde el punto de vista del paradigma de programación, el elemento más importante es el de los eventos que disparan la ejecución de las distintas funciones que desenvuelven el desarrollo del juego. En este sentido, creo que este software me permitió una familiarización bastante completa del modo como se manipulan los eventos en JavaScript; especialmente, teniendo en cuenta que las casillas del tablero enemigo debían ser depojadas de sus "escuchadores" una vez que eran atacadas, y la necesidad de sincronizar la libertad del usuario de disparar eventos y el propio ritmo de los turnos de juego.</li>
+    <li><span class="subtitulos">Drag and Drop</span>: El programa se sirve de esta funcionalidad nativa de JavaScript para que el usuario pueda distribuir manualmente su flota sobre el tablero de juego. No es sencillo manejar esta API nativa de JavaScript cuando la imagen del objeto
+
+    <span class="imagenes" id="panel_batalla"><img src="imagenes/Batalla_Naval/panel.png" alt="">Panel de presentación de los barcos a ser arrastrados</span>
+
+     desplazado debe conservar su aspecto en el transcurso del arrastre, y sin llevar consigo el fondo de su posición original. En este caso, esto era importante para que el tamaño de los barcos coincidiera en su superposición con las casillas del tablero y se pudiera apreciar el cambio del color de fondo en éstas. Se suponía que el método para la transferencia de datos en el contexto de esta API, <em>event.dataTransfer.setDragImage()</em>, debía resolver este punto. Sin embargo, el mismo tiene diferentes comportamientos en cada navegador y no fue fácil hallar una solución adecuada que funcionara en todos. De cualquier manera, creo haber alcanzado una solución aceptable -aunque no perfecta- para los navegadores más populares.</li>
+    <li><span class="subtitulos">Pseudo-<em>responsive</em></span>: De ninguna manera puede decirse que la página de presentación (index) y la interfaz gráfica del juego sean <em>responsives</em>, sobre todo teniendo en cuenta su inadecuación a pantallas pequeñas, como las de los teléfonos celulares estándar. Sin embargo, con este programa hice mis primeras armas en los <em>media queries</em> de CSS, definiendo tres hojas de estilo distintas para sendos rangos de anchura del <em>viewport</em>. Si bien la mayoría de los tamaños fueron definidos mediante unidades relativas (%, vw), estas tres hojas varían el tamaño para aquellos casos en que ello no fue posible (o no supe hacerlo), como ocurre con las propiedades CSS <em>font-size</em> y <em>height</em> (estas propiedades admiten unidades relativas, pero las mismas no se fijan en relación al ancho del <em>viewport</em>).</li>
+</ul>
+
+<h4>Algunos detalles más sobre el código</h4>
+
+<p class="publicaciones">Por cada jugador, se declaran dos vectores que almacenan la principal información sobre las incidencias y el estado del juego. Uno de ellos es bidimensional (10x10) y corresponde a los respectivos tableros, indicando principalmente el estado en que se encuentra cada casilla (ocupada, libre, diparada con fallo, disparado con acierto). En tanto, el otro vector es unidimensional y almacena de manera ordenada 15 objetos de la clase "Ship" que corresponden a la flota de cada contrincante. Entre las propiedades de estos objetos están el tipo de barco (tamaño), su orientación, las casillas ocupadas, casillas disparadas y el estado ("saved", "touched" o "sunken"). Como puede verse, hay cierta redundancia en los datos que guardan ambos vectores. Sin embargo, cada uno organiza la información de forma más adecuada para algunas u otras funciones vinculadas con el despliegue de las acciones.</p>
+<p class="publicaciones">En esta instancia del desarrollo del juego, la máquina no tiene una estrategia definida a la hora de disparar al azar sobre el tablero del usuario, aunque tampoco comete errores en relación a las casillas prohibidas (no dispara a casillas adyacentes a barcos ya hundidos).
+
+<span class="imagenes" id="batalla_completa"><img src="imagenes/Batalla_Naval/batalla_completa.png" alt="">Vista completa del juego</span>
+
+ Sin embargo, <strong>la máquina actúa de forma similar a un humano una vez que ha localizado un barco, atacando las casillas en rededor que no son adyacentes a barcos ya descubiertos</strong>. En este sentido, si bien el usuario avezado tiende a derrotar a la máquina, ésta no da grandes ventajas; resultando ganadora en no pocas ocasiones. Para implementar este "razonamiento" del programa, dividí el ataque de la máquina en dos funciones diferenciadas: una para los disparos al azar ("enemy_attack()"), y otra para el ataque a un barco recién descubierto ("to_sink()").</p>
+<p class="publicaciones">Si bien, por regla general, intento evitar <strong>las variables globales</strong>, la ausencia de punteros en JavaScript hace que ello sea en ocasiones demasiado oneroso, aumentando la cantidad de parámetros que deben pasarse a las funciones y multiplicando las variables locales que refieren a los mismos valores. Por ello, declaré como globales los vectores que contienen la información de ambos tableros de juego y los que almacenan ambas flotas (objetos de la clase "Ship"), ya que son gestionados por la mayoría de las funciones del programa. Además, declaré como globales a las variables que refieren a los elementos del DOM, para evitar repetidas llamadas a los métodos <em>.getElement...()</em> del documento HTML. Por último, las limitaciones del <em>dataTransfer.setData</em> de la API <em>Drag and Drop</em> hizo necesarias dos variables globales más para pasar información adicional sobre las imágenes arrastradas de los barcos entre las funciones que gestionan estos eventos, en función de que las mismas conserven su aspecto al ser soltadas sobre el tablero de juego.</p>

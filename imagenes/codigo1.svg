@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="codigo1.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.2861282"
+     inkscape:cx="396.53902"
+     inkscape:cy="478.95694"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <rect
+       x="123.34571"
+       y="537.52729"
+       width="416.82496"
+       height="49.242962"
+       id="rect27220" />
+    <rect
+       x="164.15389"
+       y="396.57507"
+       width="607.8492"
+       height="49.831716"
+       id="rect5666" />
+  </defs>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       transform="matrix(6.2103653e-4,-0.2645826,0.2645826,6.2103653e-4,14.761892,239.95208)"
+       id="text5664"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect5666);fill:#000000;fill-opacity:1;stroke:none"
+       inkscape:export-filename="/home/maurodonna/Documentos/mauro_pr/Ejercicios de programación propios/Mi Blog/imagenes/codigo2.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         x="164.1543"
+         y="431.96484"
+         id="tspan942"><tspan
+   style="fill:#aa4400"
+   id="tspan936">world</tspan>.<tspan
+   style="fill:#2c89a0"
+   id="tspan938">Code</tspan> = <tspan
+   style="fill:#916f6f"
+   id="tspan940">human</tspan>;</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.00244033,0.26457208,-0.26457208,0.00244033,179.66263,87.269743)"
+       id="text27218"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect27220);fill:#000000;fill-opacity:1;stroke:none"
+       inkscape:export-filename="/home/maurodonna/Documentos/mauro_pr/Ejercicios de programación propios/Mi Blog/imagenes/codigo1.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         x="123.3457"
+         y="572.91797"
+         id="tspan950"><tspan
+   style="fill:#aa4400"
+   id="tspan944">world</tspan>.<tspan
+   style="fill:#0088aa"
+   id="tspan946">reWrite</tspan>(<tspan
+   style="fill:#917c6f"
+   id="tspan948">code</tspan>);</tspan></text>
+  </g>
+</svg>

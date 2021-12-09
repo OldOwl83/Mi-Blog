@@ -1,0 +1,72 @@
+<div class="fichas_t">
+    <h5><span class="material-icons">assignment</span> FICHA TÉCNICA</h5>
+    <ul>
+        <li><span class="subtitulos">Nombre</span>: BlackJack</li>
+        <li><span class="subtitulos">Período de desarrollo</span>: mayo-junio 2021</li>
+        <li><span class="subtitulos">Lenguaje</span>: Assembler 8086</li>
+        <li><span class="subtitulos">Categoría</span>: Juego de cartas</li>
+        <li><span class="subtitulos">Implementaciones destacadas</span>: modo gráfico en MS-DOS, manejo de archivos, XorShift-RNG, DOS <em>Call Systems</em>, manipulación de registros del procesador, uso del Stack Segment, preservación de contextos, <em>eventListeners</em> de teclado, manejo del altavoz</li>
+        <li><a href="https://github.com/OldOwl83/BlackJack" target="_blank"><span class="material-icons">arrow_forward</span> Ir al código</a></li>
+        <li><a href="archivos/bj.exe" download="BlackJack.exe"><span class="material-icons">arrow_forward</span> Descargar el ejecutable</a></li>
+    </ul>
+</div>
+
+<h3>BlackJack</h3>
+
+<h4>Presentación</h4>
+
+<p class="publicaciones">¡Qué lindo es programar con Assembler! Para leer un <em>int</em> por teclado o hacer un <em>casting</em> a un <em>string</em> hay que escribir cerca de 100 líneas de código; las APIs hay que inventárselas; los contextos deben ser preservados. ¡Esto sí que es trabajo de artesano! Este programa es el punto más elevado al que han llegado mis <em>susurros al procesador</em> (¡pero también a la memoria y a los periféricos!), y espero no perder nunca este diálogo íntimo con el "fierro".</p>
+<p class="publicaciones">Y como siempre, el contenido no es más que una excusa para la forma. En este caso, se emula una visita a la mesa de BlackJack de un casino celoso de sus ganancias. El <em>set</em> de instrucciones utilizado corresponde a la arquitectura Intel 8086 de 16 bits, y fue compilado, debuggueado y testeado mediante el ensamblador TASM para MS-DOS. El ejecutable que se puede descargar sólo corre, lógicamente y con un poco de suerte, en esa plataforma.</p>
+
+<h4>Características generales del juego</h4>
+
+<p class="publicaciones">
+
+    <span class="imagenes" id="portada_bj"><img src="imagenes/BJ/portada_bj.png" alt="">Intro del juego</span>
+
+    Esta versión contempla todas las reglas estándar del BlackJack, así como controla todas las opciones e incidencias típicas del juego, con la única salvedad de la "división" de la mano cuando las dos cartas iniciales tienen el mismo valor. Esto último no pudo implementarse, porque implicaba una reorganización completa del diseño gráfico del tapete de juego. Por lo demás, el usuario dispone de un pozo inicial de 100 C para batirse contra la máquina -que representa al Crupier del casino-, y puede apostar a su propia discreción. Las condiciones de finalización del juego son tres:
+
+    <ul class="publicaciones" id="ul_bj">
+        <li>Quedarse sin crédito, lo que es evaluado como una derrota del usuario.</li>
+        <li>Alcanzar los 400 C de crédito, lo que es evaluado como un triunfo.</li>
+        <li>Ganar 5 manos seguidas, lo cual genera la sospecha de la casa de apuestas y la consiguiente expulsión del jugador. Esta situación también es evaluada como un triunfo del usuario.</li>
+    </ul>
+
+</p>
+
+<p class="publicaciones">Además, el programa solicita al usuario el ingreso de un <em>nickname</em> a la entrada del casino; lo cual permite, por una parte, personalizar los mensajes de la cartelería del
+
+    <span class="imagenes" id="inicio_mano_bj"><img src="imagenes/BJ/reparto_bj.png" alt="">Luego de la primera apuesta...</span>
+
+    juego, así como gestionar un "Salón de la fama" que conserva la cantidad de partidas ganadas por los diversos usuarios a través de distintas sesiones de juego, y mostrar un <em>ranking</em> de los mayores ganadores.</p>
+<p class="publicaciones">El programa reproduce sonido a través del altavoz de la CPU, emitiendo ruiditos que indican la presión de una tecla válida del teclado, y melodías para el inicio del programa y para la finalización de las partidas. Para apreciar este detalle en una máquina virtual con un sistema DOS debe regularse adecuadamente la velocidad del procesador.</p>
+
+<h4>Implementaciones especiales</h4>
+
+<ul class="publicaciones">
+    <li title="Ver archivo 'l_usu.asm', especialmente la función 'Modificar_salon_fama'"><span class="subtitulos">Manejo de archivos</span>: La inclusión de un "Salón de la Fama" implicó la necesidad de conservar y gestionar la cantidad de victoria alcanzadas con un mismo nombre de usuario a través de diferentes sesiones de juego. Ello no sólo me obligó a manejar los servicios de manipulación de archivos de la interrupción 0x21, sino también a diseñar un formato de archivo
+
+        <span class="imagenes" id="salon_bj"><img src="imagenes/BJ/salon_fama_bj.png" alt="">Vista del Salón de la fama</span>
+
+        adecuado a tal propósito. Buscando la solución más simple posible, establecí la siguiente estructura fija para los registros que componen ese archivo: <strong>(1)</strong> 54 bytes para el nombre de usuario, donde las posiciones no utilizadas serían completadas con '}' (el antepenúltimo caracter de la tabla ASCII, con el fin de que no se confunda con el contador de victorias que le sigue; el cual siempre debería valer menos de 125 para no romper el registro); <strong>(2)</strong> un número entero de un byte que funciona como contador de las victorias del usuario; y <strong>(3)</strong> un caracter '~' (el penúltimo ASCII) que hace de separador entre registros. Adicionalmente, se agrega un caracter nulo al final del último registro, indicando el EOF. Como puede verse, todos los registros tienen la misma longitud (56 bytes), y son leídos de manera secuencial cada vez que se produce una victoria en el juego. Si se encuentra en el primer campo de alguno de ellos una coincidencia con el nombre del usuario vigente, se copia el registro en un <em>buffer</em> auxiliar y se incrementa su contador de victorias. Luego, se retrocede el cursor del archivo de a una posición sobre los registros anteriores. Mientras el valor de sus contadores sea menor que el del registro actualizado, se graban una posición más abajo. Cuando por fin se encuentra un contador igual o mayor, el registro actualizado se graba en la posición inmediatamente inferior. Por otra parte, si no se encuentra en los registros un nombre de usuario que coincida con el actual, se graba a éste en un nuevo registro al final del archivo, inicializando su contador en 1. Así, se mantienen los registros ya ordenados de manera descendente en el propio archivo, de modo que cuando se imprime el "Salón de la Fama", el ranking de usuarios ganadores puede copiarse directamente.</li>
+
+    <li title="Ver la función 'Barajar_mazo' en el archivo 'l_mazo.asm'"><span class="subtitulos">Generador de números aleatorios <em>XorShift</em></span>: inspirado en el artículo de George Marsaglia sobre el tema, desarrollé una versión bastante chapucera de un XorShift-RNG para el reparto aleatorio del mazo de cartas. En realidad, para cada mano, el núcleo del juego sólo rellena un vector de 24 enteros distintos tomados al azar en el rango 1-52 (donde 1-13 representa las barajas de corazones, 14-26 las de diamantes, y así). Los primeros 12 enteros del vector serán servidos al usuario a medida que vaya pidiendo cartas; mientras que los 12 últimos serán para el Crupier. El reparto del mazo se limitó de esta manera, porque ninguna combinación que sume 21 o menos -de acuerdo a las reglas del BlackJack- podrá ser formada por más de 11 cartas. Por lo tanto, no valía la pena simular la mezcla de un mazo completo. En cuanto al generador <em>random</em>, en cada reparto toma como semilla los segundos y las centésimas de segundo del reloj del sistema (que se obtienen con el servicio "0x2c" de la interrupción "0x21 del S.O."). Además, guarda las unidades del segundo valor mencionado, que irán siendo incrementadas como un factor que garantiza la variación en la modificación de la secuencia y, sobre todo, no caer en la repetición del cero (el xor-shifteo de un cero siempre dará cero). Cada número en la secuencia aleatoria resulta de la siguiente operación, aplicada sobre el número anterior: primero, se rotan los 16 bits de la semilla 8 posiciones; segundo, se xorea el número obtenido con su versión anterior; luego, se le suman las unidades guardadas de la semilla original, pero siempre incrementada en uno; finalmente, se obtiene el resto de su división por 52, y se incrementa el resultado, para obtener un entero entre 1 y 52. Para facilitar las
+
+        <span class="imagenes" id="random_bj"><img src="imagenes/BJ/salida_random_c.png" alt="">Salida de pruebas del generador random en C</span>
+
+        pruebas, reproduje el mismo algoritmo en C, y con las mismas longitudes de datos (<em>unsigned short</em> para los registros de 16 bits, y <em>char</em> para los de un byte). Guardé en un arreglo de 52 posiciones las apariciones de los distintos números en una secuencia de 10000 operaciones a partir de una misma semilla original (tomada del reloj del sistema); obteniendo datos que, a mi modo de ver, son aceptables para un ejercicio <em>amateur</em>, pero que dista mucho de ser perfecto, ya que, si bien la cantidad de apariciones de todo el rango de números es bastante pareja (abarcando un espectro de 171-217 apariciones), lo cierto es que con cualquier semilla son los mismos números los que salen favorecidos o no. Posteriormente, en ocasión de un ejercicio de creación de un módulo del kernel de Linux, hice algunos pequeños ajustes a esta misma solución (el más importante de los cuales fue inyectar ceros en el shifteo, en lugar de rotar los bits), pero con resultados mucho mejores, obteniendo un rango de apariciones de 26 letras en 10000 salidas entre 377 y 395, y variando notablemente las letras favorecidas según la semilla plantada.</li>
+
+    <div id="cont_details">
+        <details id="versiones_random_c" class="publicaciones">
+            <summary>Versiones del XorShift-RNG en C</summary>
+            <p>* <a href="archivos/xorshift_random.c" download="batalla_naval_hello_code.psc">Descargar versión implementada en el BlackJack</a></p>
+            <p>* <a href="archivos/xorshift_random_c2.c" download="batalla_naval_hello_code.psc">Descargar versión mejorada</a></p>
+
+        </details>
+    </div>
+    <li title="Ver principalmente funciones 'Imprimir_tapete', 'Imprimir_credito', 'Cuadro de diálogo', 'Servir_carta','Cajita_musical' y 'Retraso'"><span class="subtitulos">Gráfica y sonido</span>: Sin dudas, uno de los mayores "cucos" a la hora de encarar este proyecto fue la representación gráfica del juego. Fue necesario explorar las variantes de video que ofrece la interrupción 0x10 de DOS y aprender a combinar el modo texto con el modo gráfico, ya que junto con el tapete de juego y la impresión de las cartas, había que imprimir leyendas de interacción con el usuario y los acumulados del crédito y del pozo de apuestas. Como siempre, a medida que uno se mete en uno
+
+        <span class="imagenes" id="mano_ganada_bj"><img src="imagenes/BJ/ganancia_bj.png" alt="">Mano ganada</span>
+
+        de estos asuntos, los va domeñando de a poco; y en este caso había que acostumbrarse a pintar píxeles cuidadosamente sobre un lienzo de 640x350, que se superponía con la grilla más rústica de la pantalla de texto, de 80x25. Así, por ejemplo, el fondo de los naipes y sus líneas fueron compuestos por escrupulosos bucles que debían tener en consideración los píxeles que ocupaban los números y los dibujos de los palos (caracteres ASCII), y la posición que ocuparían de acuerdo a la columna de la pantalla de texto en que se imprimieran. En cuanto al "audio", para la automatización del manejo de los puertos 0x42 y 0x61, correspondientes al altavoz, inventé una función "Cajita_musical" que recibe como parámetros dos secuencias de enteros; una que representa una melodía, y la otra su ritmo. En cuanto a la primera, fue necesario investigar la relación entre la frecuencia de entrada del altavoz y la de las notas musicales. Para la segunda, en cambio, se construyó otra función, llamada "Retraso", que controla los cambios en el <em>timer</em> del sistema para generar una demora acorde al valor recibido por parámetro.</li>
+</ul>

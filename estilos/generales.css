@@ -17,6 +17,7 @@
     --fondo_oscuro_clr: orange;
     --detalles_1_clr: #8c00d8; /*violeta*/
     --detalles_2_clr: orangered; /*naranja*/
+    --detalles_2_masclr: #c0824a;
     --bordes_suaves_clr: #999; /*gris*/
 }
 
@@ -38,36 +39,96 @@ body
     position: relative;
 
     width: 80%;
-    min-height: 660px;
     margin: auto;
 
+    font-size: 16px;
     background-color: var(--fondo_claro_clr);
 }
 
 header
 {
-    height: 110px;
+    min-height: 110px;
     padding-top: 40px;
 
-    background-color: #9955ff99;
+    user-select: none;
+    background: linear-gradient(35deg, #c293ec 40%, beige 100% );
     border: 1px solid var(--bordes_suaves_clr);
 }
 
 header img
 {
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 15px;
     width: 94%;
 }
 
 h1
 {
-    margin-left: 60px;
+    margin-left: 10%;
+    margin-bottom: 18px;
     font-family: 'Comfortaa Bold', cursive;
     font-size: 280%;
+    font-variant: small-caps;
+    letter-spacing: 4px;
+    text-shadow: 3px 3px 2px #555;
+}
+
+h2
+{
+    margin-left: 20%;
+    font-family: 'Cantarell', sans-serif;
+    font-size: 140%;
+    color: white;
+    text-shadow: 2px 2px 1px darkorange, -1px -1px 1px black;
+    letter-spacing: 2px;
+}
+
+h3
+{
+    margin: 26px 15px;
+    font-family: 'Comfortaa Bold', cursive;
+    font-size: 200%;
+    font-variant: small-caps;
+    color: var(--detalles_2_clr);
+    letter-spacing: 1px;
+}
+
+h4
+{
+    margin: 50px 20px 16px;
+    font-family: 'Comfortaa Bold', cursive;
+    font-size: 130%;
+    font-variant: small-caps;
+    color: var(--detalles_1_clr);
+    letter-spacing: 1px;
+}
+
+h5
+{
+    display: flex;
+    justify-content: center;
+    margin: 16px;
+    padding-bottom: 10px;
+    font-family: 'Arial', sans-serif;
+    font-size: 130%;
+    color: black;
+    border-bottom: 1px solid black;
+}
+
+h5 span
+{
+    margin-right: 10px;
+}
+
+.material-icons
+{
+    vertical-align: middle;
+    font-size: 10px;
 }
 
 #contenedor_princ
 {
-    margin: 80px 4% 10px 22%;
+    position: relative;
+    min-height: 400px;
+    margin: 120px 4% 10px 22%;
 }

@@ -1,0 +1,57 @@
+#tablero
+{
+    border: 1px black solid;
+    margin: 15px auto;
+    background-color: #fdb3b3;
+}
+
+#contador
+{
+    margin: 15px auto 5px;
+    border: 2px black solid;
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+
+    background-color: #ffaa9b;
+}
+
+.casillero
+{
+    border: 2px #ce4f00 solid;
+    border-radius: 6px;
+    color: #0000a3;
+    font-size: 18px;
+    font-family: 'Calibri';
+    font-weight: bolder;
+    user-select: none;
+}
+
+.oculto
+{
+    background-color: #ffe242;
+}
+
+.bloqueado
+{
+    background-color: #be0e0e;
+}
+
+.tocado
+{
+    background-color: beige;
+}
+
+.bomba
+{
+    background-color: blueviolet;
+    background-image: url(touched.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.bloqueado.bomba
+{
+    background-color: #6c2a00;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="es">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="author" content="Mauro Donnantuoni Moratto" >
+        <meta name="description" content="Clon de Buscaminas - ejercicio de programación" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Buscabombas</title>
+
+        <link rel="shortcut icon" href="bombazo.png" type="image/x-icon">
+
+        <script type="text/javascript" src="clase_Buscabombas.js"></script>
+        <script type="text/javascript" src="funciones.js" defer></script>
+
+        <link rel="stylesheet" type="text/css" href="estilos_Buscabombas.css"/>
+        <link rel="stylesheet" type="text/css" href="estilos_generales.css"/>
+
+    </head>
+
+    <body>
+
+        <header>
+
+            <div id="icono_cont">
+                <img alt="Estallido" src="touched.png" />
+            </div>
+
+            <div id="titulos_cont">
+
+                <h1>BuscaBombas</h1>
+                <h2>Un clon del Buscaminas, para la web</h2>
+
+
+            </div>
+
+        </header>
+
+        <main>
+
+            <p>Seleccione las opciones:</p>
+
+            <div id="botones_cont">
+
+                <select id="tams" class="boton">
+                    <option value="chico">PEQUEÑO</option>
+                    <option value="mediano">MEDIANO</option>
+                    <option value="grande">GRANDE</option>
+                </select>
+
+                <select id="niv" class="boton">
+                    <option value="facil">FÁCIL</option>
+                    <option value="intermedio">INTERMEDIO</option>
+                    <option value="dificil">DIFÍCIL</option>
+                </select>
+
+                <button id="crear" type="button" class="boton" onclick="Crear_tablero();">GENERAR TABLERO</button>
+
+            </div>
+
+            <div id="tablero_cont"></div>
+
+            <p id="cartel_resul"></p>
+        </main>
+
+        <footer>
+
+            <ul id="footer_data">
+                <li>© 2021 Mauro Donnantuoni Moratto</li>
+                <li><a href="https://github.com/OldOwl83" target="_blank">GitHub: OldOwl83</a></li>
+                <li><a href="#">MDM Programación</a></li>
+            </ul>
+
+            <p id="slogan"></p>
+
+            <img src="developed.png" id="developed" draggable="false" />
+
+        </footer>
+    </body>
+</html>
