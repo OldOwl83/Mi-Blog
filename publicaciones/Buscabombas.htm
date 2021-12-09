@@ -1,76 +1,71 @@
-<div class="cont_publicaciones">
-    <div class="fichas_t">
-        <h5><span class="material-icons">assignment</span> FICHA TÉCNICA</h5>
-        <ul>
-            <li><span class="subtitulos">Nombre</span>: BuscaBombas</li>
-            <li><span class="subtitulos">Período de desarrollo</span>: noviembre 2021</li>
-            <li><span class="subtitulos">Stack</span>: HTML5</li>
-            <li><span class="subtitulos">Categoría</span>: Juego solitario</li>
-            <li><span class="subtitulos">Implementaciones destacadas</span>: clases y objetos en JavaScript, <em>eventListeners</em> dentro de la definición de una clase, manipulación del DOM con JavaScript</li>
-            <li><a href="sitios/BuscaBombas/index.html" target="_blank"><span class="material-icons">arrow_forward</span> Ir a la página del juego</a></li>
-            <li><a href="https://github.com/OldOwl83/BuscaBombas" target="_blank"><span class="material-icons">arrow_forward</span> Ir al código</a></li>
-        </ul>
-    </div>
-
-    <h3>BuscaBombas</h3>
-
-    <h4>Presentación</h4>
-
-    <p class="publicaciones">Este juego es un simple clon del clásico Buscaminas, popularizado por Microsoft a través de su inclusión por defecto en muchas versiones antiguas de Windows. Desde el punto de vista del diseño del código, este programa puede ser emparentado con la Batalla Naval, ya que también se desarrolla sobre un tablero de casillas cuya relación con las adyacentes es de vital importancia. Sin embargo, la complejidad de esas relaciones es mucho menor en este caso: es más fácil contar cuántas bombas hay alrededor de una casilla, que validar la presencia de barcos que pueden ser de distinto tamaño, diversa orientación y traspasar los límites del tablero. Por eso, podría resultar hasta cierto punto paradójico que, pareciendo este proyecto mucho menos desafiante que el anterior, lo haya encarado una vez terminado el otro. La motivación para ello fue que me pareció ver en el diseño de este tipo de tableros la posibilidad de explorar el paradigma orientado a objetos con las herramientas que ofrece JavaScript.</p>
-
-    <p class="publicaciones">Como cuento en el artículo sobre la "Batalla Naval", en esa ocasión los tableros de juegos fueron representados a nivel del código por matrices bidimensionales que almacenaban el estado de las casillas según su posición en las coordenadas <em>x</em> e <em>y</em>. En esta oportunidad, en cambio, se me ocurrió pensar al tablero como un objeto compuesto por otros objetos (los casilleros), cada uno de los cuales estarían definidos por propiedades distintas, pero estrechamente ligadas entre sí. De allí que el verdadero desafío de este proyecto consistió en definir una clase que por sí sola pudiera construir ese objeto integral (el tablero), de modo tal que ya tuviera incorporado el comportamiento adecuado para el desarrollo completo del juego. De tal forma, más allá del algoritmo de implementación del juego en sí (relativamente sencillo), este software me sirvió como un laboratorio para la creación de clases en JavaScript, y para la práctica de la composicionalidad entre objetos.</p>
-
-    <p class="publicaciones">El resultado fue la definición de una función constructora de casillas, y el diseño de una clase que tomara una colección de casillas suficiente para formar un tablero completo, listo para jugar. Puede verse una instancia de esa clase en el siguiente apartado. Para apreciar mejor la variantes que permite esta clase, sin embargo, recomiendo visitar la página del juego.</p>
-
-    <h4>Un tablero de muestra</h4>
-
-    <p id="tablero_BuscaBombas">Click izquierdo: dispara sobre las casillas; click derecho: bloquea casillas</p>
-
-    <script type="text/javascript" src="sitios/BuscaBombas/clase_Buscabombas.js"></script>
-    <script type="text/javascript" src="js/insertar_buscabombas.js"></script>
-
-    <h4>Organización general </h4>
-
-    <p class="publicaciones">Tanto las propiedades como los métodos que define la clase "Buscabombas" pueden clasificarse en dos grupos bien diferenciados: el que trabaja en el nivel lógico del juego, y el que gestiona la creación y mantenimiento de los elementos del DOM que son visibles al jugador (todos los
-
-        <span class="imagenes" id="buscabombas"><img src="imagenes/BuscaBombas/buscabombas.png" alt="">Página del juego</span>
-
-        elementos que pertenecen a este último grupo incluyen 'DOM' en su nombre). Dentro de cada grupo, se ha intentado modularizar las funciones al máximo, y la interacción entre ellos se lleva a cabo solamente mediante pasaje de parámetros, conservando la separación de esos dos niveles con el mayor rigor posible.</p>
-
-        <p class="publicaciones">Por su parte, los objetos definidos por la función constructora de casilleros pertenecen exclusivamente al nivel lógico, consistiendo simplemente en el conjunto de datos que determinan el estado de cada casilla particular (coordenadas <em>x</em> e <em>y</em>, si tiene bomba, cantidad de bombas alrededor y si ya fue disparado). En este sentido, pueden ser pensados como simples <em>structs</em>. Al nivel del DOM, también hay elementos particulares que correponden a los casilleros, pero son generados por la función constructora del tablero del DOM, con un ID que expresa su posición sobre los ejes y una clase HTML que indica su estado ("libre", "bloqueado", "tocado", "estallado").</p>
-
-        <h4>La interfaz pública de la clase Buscabombas</h4>
-
-        <p class="publicaciones">Como ya se dijo, la clase "Buscabombas" está diseñada para crear tableros de juego listos para ser usados, aunque éstos son ampliamente personalizables. Por ello, no es deseable que el cliente de la clase acceda innecesariamente a la mayoría de sus propiedades y métodos, ya que podría alterar el funcionamiento regular de los objetos creados por ella. Sin embargo, JavaScript no dispone de un mecanismo directo específico de encapsulamiento. Para atacar este problema, la documentación de la clase presenta una interfaz pública donde se aclara cuáles son los elementos que pueden ser modificados por el usuario para manipular y personalizar el tablero, sin riesgo de romper el funcionamiento del programa. Esta interfaz pública incluye:</p>
-
-        <ul class="publicaciones">
-
-            <li><strong>Constantes simbólicas</strong> para determinar el tamaño del tablero y el nivel de dificultad del juego, y para leer el estado del mismo (abierto, ganado, perdido).</li>
-            <li><strong>Un constructor</strong> que recibe como argumentos el tamaño del tablero, el nivel de dificultad, y la función (CallBack) que recibirá el resultado final del juego (triunfo o derrota). Esta función debe ser definida por el cliente, y con ella puede gestionar la conclusión del juego de la manera que considere apropiado (por ejemplo, emitiendo una leyenda en la que se anuncie el triunfo o la derrota).</li>
-            <li><strong>Propiedades</strong> de sólo lectura:
-
-                <span class="imagenes" id="codigo_buscabombas"><img src="imagenes/BuscaBombas/codigo.png" alt="">Definición de las constantes simbólicas, la función constructora de casillas y el comienzo de la clase "Buscabombas"</span>
-
-                <ul class="publicaciones" style="font-size: 100%;">
-                    <li><span class="subtitulos">.estado</span>: indica si el juego está inconcluso (ABIERTO) o no (GANADO o PERDIDO).</li>
-                    <li><span class="subtitulos">.tableroDOM</span>: elemento HTML tipo "div" que contiene un tablero completo, listo para jugar. El cliente puede asignarle un ID, personalizar su estilo CSS e insertarlo en la parte del DOM que considere apropiada. Las únicas propiedades de estilo que no deberían ser modificadas son "width" y "height", que se gestionan con un método especial.</li>
-                    <li><span class="subtitulos">.contadorBloqueosDOM</span>: otro elemento tipo "div" que exhibe la cuenta regresiva de las casillas que fueron bloqueadas con el botón derecho del ratón en el ".tableroDOM".</li>
-                </ul>
-            </li>
-            <li>Un <strong>método ".EstablecerTamTableroDOM(pxAncho)"</strong>: establece el ancho del tablero medido en píxeles.</li>
-            <li><strong>Clases HTML</strong> para estilizar los casilleros del tablero:
-                <ul class="publicaciones" style="font-size: 100%;">
-                    <li><span class="subtitulos">casillero</span>: clase común a todos los casilleros, pensada para establecer propiedades comunes, como bordes o márgenes.</li>
-                    <li><span class="subtitulos">oculto</span>: clase correspondiente a los casilleros que aun no han sido disparados.</li>
-                    <li><span class="subtitulos">bloqueado</span>: clase correspondiente a los casilleros no disparados, marcados por el jugador con el botón derecho del ratón. Los mismos no pueden ser disparados, aunque sí pueden ser desbloqueados.</li>
-                    <li><span class="subtitulos">tocado</span>: clase correspondiente a los casilleros disparados.</li>
-                    <li><span class="subtitulos">bomba</span>: clase correspondiente a los casilleros que contienen bomba, cuando el jugador ha disparado sobre una bomba y, por tanto, ha perdido el juego.</li>
-                </ul>
-            </li>
-
-        </ul>
-
-        <h4>Algunos detalles más sobre la implementación</h4>
-
-        <p class="publicaciones">Escribiendo este código, me topé con una dificultad adicional, que me sirvió para conocer <strong>el método del prototipo de funciones ".bind()"</strong>, que sirve para reasignar el valor del operador "this" de una función. En mi caso, el problema surgió al querer establecer funciones para las escuchas de eventos dentro de la definción de la propia clase; con lo que se generaba una ambigüedad para ese operador, ya que se debía usar tanto para referir a las instancias particulares de la clase, como al "target" de un determinado evento. En cambio, llamando a las funciones asociadas con la escucha de eventos con la forma: <em>nombreFunción.bind(this)</em> (donde "this" claramente refiere al objeto creado por la clase), dentro de la función del evento era posible referir a los elementos de la clase con ese operador, y al <em>target</em> del evento con "<em>event.target</em>". La solución, sin embargo, no fue tan simple y directa, por lo que invito a revisar el código comentado a quien le interese este problema particular.</p>
+<div class="fichas_t">
+    <h5><span class="material-icons">assignment</span> FICHA TÉCNICA</h5>
+    <ul>
+        <li><span class="subtitulos">Nombre</span>: BuscaBombas</li>
+        <li><span class="subtitulos">Período de desarrollo</span>: noviembre 2021</li>
+        <li><span class="subtitulos">Stack</span>: HTML5</li>
+        <li><span class="subtitulos">Categoría</span>: Juego solitario</li>
+        <li><span class="subtitulos">Implementaciones destacadas</span>: clases y objetos en JavaScript, <em>eventListeners</em> dentro de la definición de una clase, manipulación del DOM con JavaScript</li>
+        <li><a href="sitios/BuscaBombas/index.html" target="_blank"><span class="material-icons">arrow_forward</span> Ir a la página del juego</a></li>
+        <li><a href="https://github.com/OldOwl83/BuscaBombas" target="_blank"><span class="material-icons">arrow_forward</span> Ir al código</a></li>
+    </ul>
 </div>
+
+<h3>BuscaBombas</h3>
+
+<h4>Presentación</h4>
+
+<p class="publicaciones">Este juego es un simple clon del clásico Buscaminas, popularizado por Microsoft a través de su inclusión por defecto en muchas versiones antiguas de Windows. Desde el punto de vista del diseño del código, este programa puede ser emparentado con la Batalla Naval, ya que también se desarrolla sobre un tablero de casillas cuya relación con las adyacentes es de vital importancia. Sin embargo, la complejidad de esas relaciones es mucho menor en este caso: es más fácil contar cuántas bombas hay alrededor de una casilla, que validar la presencia de barcos que pueden ser de distinto tamaño, diversa orientación y traspasar los límites del tablero. Por eso, podría resultar hasta cierto punto paradójico que, pareciendo este proyecto mucho menos desafiante que el anterior, lo haya encarado una vez terminado el otro. La motivación para ello fue que me pareció ver en el diseño de este tipo de tableros la posibilidad de explorar el paradigma orientado a objetos con las herramientas que ofrece JavaScript.</p>
+
+<p class="publicaciones">Como cuento en el artículo sobre la "Batalla Naval", en esa ocasión los tableros de juegos fueron representados a nivel del código por matrices bidimensionales que almacenaban el estado de las casillas según su posición en las coordenadas <em>x</em> e <em>y</em>. En esta oportunidad, en cambio, se me ocurrió pensar al tablero como un objeto compuesto por otros objetos (los casilleros), cada uno de los cuales estarían definidos por propiedades distintas, pero estrechamente ligadas entre sí. De allí que el verdadero desafío de este proyecto consistió en definir una clase que por sí sola pudiera construir ese objeto integral (el tablero), de modo tal que ya tuviera incorporado el comportamiento adecuado para el desarrollo completo del juego. De tal forma, más allá del algoritmo de implementación del juego en sí (relativamente sencillo), este software me sirvió como un laboratorio para la creación de clases en JavaScript, y para la práctica de la composicionalidad entre objetos.</p>
+
+<p class="publicaciones">El resultado fue la definición de una función constructora de casillas, y el diseño de una clase que tomara una colección de casillas suficiente para formar un tablero completo, listo para jugar. Puede verse una instancia de esa clase en el siguiente apartado. Para apreciar mejor la variantes que permite esta clase, sin embargo, recomiendo visitar la página del juego.</p>
+
+<h4>Un tablero de muestra</h4>
+
+<p id="tablero_BuscaBombas">Click izquierdo: dispara sobre las casillas; click derecho: bloquea casillas</p>
+
+<h4>Organización general </h4>
+
+<p class="publicaciones">Tanto las propiedades como los métodos que define la clase "Buscabombas" pueden clasificarse en dos grupos bien diferenciados: el que trabaja en el nivel lógico del juego, y el que gestiona la creación y mantenimiento de los elementos del DOM que son visibles al jugador (todos los
+
+    <span class="imagenes" id="buscabombas"><img src="imagenes/BuscaBombas/buscabombas.png" alt="">Página del juego</span>
+
+    elementos que pertenecen a este último grupo incluyen 'DOM' en su nombre). Dentro de cada grupo, se ha intentado modularizar las funciones al máximo, y la interacción entre ellos se lleva a cabo solamente mediante pasaje de parámetros, conservando la separación de esos dos niveles con el mayor rigor posible.</p>
+
+    <p class="publicaciones">Por su parte, los objetos definidos por la función constructora de casilleros pertenecen exclusivamente al nivel lógico, consistiendo simplemente en el conjunto de datos que determinan el estado de cada casilla particular (coordenadas <em>x</em> e <em>y</em>, si tiene bomba, cantidad de bombas alrededor y si ya fue disparado). En este sentido, pueden ser pensados como simples <em>structs</em>. Al nivel del DOM, también hay elementos particulares que correponden a los casilleros, pero son generados por la función constructora del tablero del DOM, con un ID que expresa su posición sobre los ejes y una clase HTML que indica su estado ("libre", "bloqueado", "tocado", "estallado").</p>
+
+    <h4>La interfaz pública de la clase Buscabombas</h4>
+
+    <p class="publicaciones">Como ya se dijo, la clase "Buscabombas" está diseñada para crear tableros de juego listos para ser usados, aunque éstos son ampliamente personalizables. Por ello, no es deseable que el cliente de la clase acceda innecesariamente a la mayoría de sus propiedades y métodos, ya que podría alterar el funcionamiento regular de los objetos creados por ella. Sin embargo, JavaScript no dispone de un mecanismo directo específico de encapsulamiento. Para atacar este problema, la documentación de la clase presenta una interfaz pública donde se aclara cuáles son los elementos que pueden ser modificados por el usuario para manipular y personalizar el tablero, sin riesgo de romper el funcionamiento del programa. Esta interfaz pública incluye:</p>
+
+    <ul class="publicaciones">
+
+        <li><strong>Constantes simbólicas</strong> para determinar el tamaño del tablero y el nivel de dificultad del juego, y para leer el estado del mismo (abierto, ganado, perdido).</li>
+        <li><strong>Un constructor</strong> que recibe como argumentos el tamaño del tablero, el nivel de dificultad, y la función (CallBack) que recibirá el resultado final del juego (triunfo o derrota). Esta función debe ser definida por el cliente, y con ella puede gestionar la conclusión del juego de la manera que considere apropiado (por ejemplo, emitiendo una leyenda en la que se anuncie el triunfo o la derrota).</li>
+        <li><strong>Propiedades</strong> de sólo lectura:
+
+            <span class="imagenes" id="codigo_buscabombas"><img src="imagenes/BuscaBombas/codigo.png" alt="">Definición de las constantes simbólicas, la función constructora de casillas y el comienzo de la clase "Buscabombas"</span>
+
+            <ul class="publicaciones" style="font-size: 100%;">
+                <li><span class="subtitulos">.estado</span>: indica si el juego está inconcluso (ABIERTO) o no (GANADO o PERDIDO).</li>
+                <li><span class="subtitulos">.tableroDOM</span>: elemento HTML tipo "div" que contiene un tablero completo, listo para jugar. El cliente puede asignarle un ID, personalizar su estilo CSS e insertarlo en la parte del DOM que considere apropiada. Las únicas propiedades de estilo que no deberían ser modificadas son "width" y "height", que se gestionan con un método especial.</li>
+                <li><span class="subtitulos">.contadorBloqueosDOM</span>: otro elemento tipo "div" que exhibe la cuenta regresiva de las casillas que fueron bloqueadas con el botón derecho del ratón en el ".tableroDOM".</li>
+            </ul>
+        </li>
+        <li>Un <strong>método ".EstablecerTamTableroDOM(pxAncho)"</strong>: establece el ancho del tablero medido en píxeles.</li>
+        <li><strong>Clases HTML</strong> para estilizar los casilleros del tablero:
+            <ul class="publicaciones" style="font-size: 100%;">
+                <li><span class="subtitulos">casillero</span>: clase común a todos los casilleros, pensada para establecer propiedades comunes, como bordes o márgenes.</li>
+                <li><span class="subtitulos">oculto</span>: clase correspondiente a los casilleros que aun no han sido disparados.</li>
+                <li><span class="subtitulos">bloqueado</span>: clase correspondiente a los casilleros no disparados, marcados por el jugador con el botón derecho del ratón. Los mismos no pueden ser disparados, aunque sí pueden ser desbloqueados.</li>
+                <li><span class="subtitulos">tocado</span>: clase correspondiente a los casilleros disparados.</li>
+                <li><span class="subtitulos">bomba</span>: clase correspondiente a los casilleros que contienen bomba, cuando el jugador ha disparado sobre una bomba y, por tanto, ha perdido el juego.</li>
+            </ul>
+        </li>
+
+    </ul>
+
+    <h4>Algunos detalles más sobre la implementación</h4>
+
+    <p class="publicaciones">Escribiendo este código, me topé con una dificultad adicional, que me sirvió para conocer <strong>el método del prototipo de funciones ".bind()"</strong>, que sirve para reasignar el valor del operador "this" de una función. En mi caso, el problema surgió al querer establecer funciones para las escuchas de eventos dentro de la definción de la propia clase; con lo que se generaba una ambigüedad para ese operador, ya que se debía usar tanto para referir a las instancias particulares de la clase, como al "target" de un determinado evento. En cambio, llamando a las funciones asociadas con la escucha de eventos con la forma: <em>nombreFunción.bind(this)</em> (donde "this" claramente refiere al objeto creado por la clase), dentro de la función del evento era posible referir a los elementos de la clase con ese operador, y al <em>target</em> del evento con "<em>event.target</em>". La solución, sin embargo, no fue tan simple y directa, por lo que invito a revisar el código comentado a quien le interese este problema particular.</p>
