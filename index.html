@@ -8,11 +8,12 @@
         <meta name="description" content="Blog personal de programación informática en diversos lenguajes" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link rel="shortcut icon" href="" type="image/x-icon">
+        <link rel="shortcut icon" href="imagenes/icono.png" type="image/x-icon">
 
-        <title>¡Hola Código!</title>
+        <title>Hello Code!</title>
 
         <link rel="stylesheet" href="estilos/generales.css" type="text/css">
+        <link rel="stylesheet" href="estilos/generales_movil.css" type="text/css">
         <link rel="stylesheet" href="estilos/menu_lateral.css" type="text/css">
         <link rel="stylesheet" href="estilos/menu_superior.css" type="text/css">
         <link rel="stylesheet" href="estilos/footer.css" type="text/css">
@@ -29,6 +30,8 @@
         <script type="text/javascript" src="js/filtros_menu.js" defer></script>
         <script type="text/javascript" src="js/inserta_entrada.js"></script>
         <script type="text/javascript" src="js/envio_mensajes.js"></script>
+        <script type="text/javascript" src="sitios/BuscaBombas/clase_Buscabombas.js"></script>
+        <script type="text/javascript" src="js/insertar_buscabombas.js"></script>
 
     </head>
 
@@ -47,7 +50,7 @@
                 <h5 id="tit_filtro">Organizar por...</h5>
 
                 <!-- Los values de "filtros" deben corresponder a la columna en que aparecen las etiquetas en el array "entradas" de la función "Filtrado_entradas" -->
-                <select id="filtros" onclick="Filtrado_entradas(this.value);">
+                <select id="filtros" onchange="Filtrado_entradas(this.value);">
                     <option value="2">Lenguaje/Stack</option>
                     <option value="3">Categoría</option>
                     <option value="4">Complejidad</option>
@@ -98,7 +101,7 @@
             <ul id="footer_data">
                 <li>© 2021 Mauro Donnantuoni Moratto</li>
                 <li><a href="https://github.com/OldOwl83">GitHub: OldOwl83</a></li>
-                <li>MDM Programación</li>
+                <li><a href="https://hellocode-blog.net/">Hello Code!</a></li>
             </ul>
             <p id=slogan>El mundo es un código que siempre puede reescribirse.</p>
             <img src="imagenes/developed.png" id="developed" draggable="false" />

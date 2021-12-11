@@ -2,7 +2,7 @@
 
 if(isset($_POST["casilla"]))
 {
-    if(!$archivo = fopen("mensajes/mens_recibidos.txt", "a"))
+    if(!$archivo = fopen("../../mensajes/mens_recibidos.txt", "a"))
     {
         exit("Error en la apertura del archivo de mensajes.");
     }
@@ -23,7 +23,8 @@ if(isset($_POST["casilla"]))
 
     echo "<h3>Buzón de mensajes</h3><p>El mensaje fue enviado correctamente. Muchas gracias por tu interés. Pronto recibirás una respuesta.</p>";
 
-    mail("maurodonnamora@gmail.com", "Nuevo mensaje en ¡Hola Código!", "¡¡¡Llegó nuevo mensaje!!!");
+
+    mail("mi_mail@mi_mail.com", "Nuevo mensaje en Hello Code!", "¡¡¡Llegó nuevo mensaje!!!", "From: mi_mail@mi_mail.com\r\nContent-type: text/html; charset=UTF-8");
 
 }else
 {

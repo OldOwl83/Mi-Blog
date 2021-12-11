@@ -39,10 +39,34 @@ body
     position: relative;
 
     width: 80%;
+    max-width: 1200px;
     margin: auto;
 
-    font-size: 16px;
     background-color: var(--fondo_claro_clr);
+}
+
+@media screen and (min-width: 1601px)
+{
+    body
+    {
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1600px)
+{
+    body
+    {
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 841px) and (max-width: 1200px)
+{
+    body
+    {
+        font-size: 14px;
+    }
 }
 
 header
@@ -131,4 +155,9 @@ h5 span
     position: relative;
     min-height: 400px;
     margin: 120px 4% 10px 22%;
+
+    /* background-image: url("../imagenes/portada.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; */
 }

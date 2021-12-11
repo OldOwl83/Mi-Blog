@@ -6,7 +6,7 @@ function Filtrado_entradas(filtro)
 {
     const entradas = [ //1º: Nombre visible de la entrada; 2º: ID de la entrada y nombre del archivo ".htm"; (3º en adelante: etiquetas en el orden de los "value"s de "filtros".); 3º: Lenguaje; 4º: Categoría; 5º: Complejidad. Si una entrada no tiene etiquetas correspondientes a un filtro, debe incluir un string vacío en su lugar.
                     ["Base de datos de clientes", "BD_Clientes", "C", "Bases de datos", "Alta", "(sin clasificar)"],
-                    ["Calculín", "Calculin", "HTML5", "Calculadoras/Juegos", "Baja", "eventListeners"],
+                    ["Calculín", "Calculin", "HTML5", "Calculadoras", "Baja", "eventListeners"],
                     ["BuscaBombas", "Buscabombas", "HTML5", "Juegos", "Media", "Clases/Composicionalidad/eventListeners"],
                     ["Catalón", "Catalon", "PHP", "Bases de datos", "Alta", "(sin clasificar)"],
                     ["BlackJack", "BlackJack", "Assembler x8086", "Juegos", "Alta", "Manejo de archivos/Generador de números aleatorios/Modo video"],

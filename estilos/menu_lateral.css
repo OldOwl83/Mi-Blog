@@ -8,6 +8,7 @@
     display: block;
     width: 16%;
     margin-top: 10px;
+    margin-bottom: 50px;
     box-sizing: border-box;
     z-index: 1;
 
@@ -114,4 +115,9 @@
 .etiquetas:hover .cont_entradas
 {
     display: block;
+}
+
+.texto
+{
+    overflow: hidden;
 }
