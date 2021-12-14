@@ -7,10 +7,17 @@
     top: 40px;
     display: block;
     width: 16%;
-    margin-top: 10px;
+    margin-top: 50px;
     margin-bottom: 50px;
     box-sizing: border-box;
     z-index: 1;
+}
+
+#tit_menu_lat
+{
+    font_size: 120%;
+    color: var(--detalles_1_clr);
+    border-bottom: 1px solid var(--detalles_2_clr);
 
 }
 
@@ -21,18 +28,22 @@
 
 #tit_filtro
 {
+    margin: 0px auto;
     text-align: center;
-    font-size: 100%;
+    font-size: 80%;
+
+    border-bottom: none;
 }
 
 #filtros
 {
     display: block;
-    margin: 10px auto;
+    width: 80%;
+    margin: 0px auto;
     padding: 5px;
 
     font-family: 'Arial', sans-serif;
-    font-size: 90%;
+    font-size: 80%;
 }
 
 #zona_etiquetas
@@ -45,7 +56,7 @@
 .etiquetas, .entradas
 {
     width: 100%;
-    padding: 8px 18px;
+    padding: 8px 10px 8px 16px;
     box-sizing: border-box;
 
     font-size: 100%;

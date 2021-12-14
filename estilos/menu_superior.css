@@ -3,7 +3,8 @@
     float: right;
     display: flex;
     justify-content: flex-end;
-    width: 78%;
+    width: 83%;
+    box-sizing: border-box;
 
     border: 1px solid var(--bordes_suaves_clr);
     background-color: #9c50e8;

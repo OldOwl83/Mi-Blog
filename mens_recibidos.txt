@@ -1,0 +1,43 @@
+
+-----------------------------------------------------------------
+
+Fecha:			Fri, 10 Dec 2021 01:17:53 +0000
+Nombre:		Soy yo
+Casilla:			maurodonnamora@gmail.com
+Mensaje:
+				Este es un mensaje de prueba, que dudo que funcione.
+-----------------------------------------------------------------
+
+Fecha:			Fri, 10 Dec 2021 22:21:23 +0000
+Nombre:		Rodolfo
+Casilla:			rodo@lamarencoche.com
+Mensaje:
+				¡¡¡Quiero ver cómo llega este mensaje!!!
+-----------------------------------------------------------------
+
+Fecha:			Fri, 10 Dec 2021 22:29:04 +0000
+Nombre:		Schul
+Casilla:			shul@cualquiera.com
+Mensaje:
+				¡¡¡Quiero que aparezcan los ácéntósssss!!!
+-----------------------------------------------------------------
+
+Fecha:			Fri, 10 Dec 2021 23:58:29 +0000
+Nombre:		Tito Puente
+Casilla:			titopuente@hitmail.com
+Mensaje:
+				Mando un mensaje re-loco.
+-----------------------------------------------------------------
+
+Fecha:			Sat, 11 Dec 2021 00:20:41 +0000
+Nombre:		Susana Rinaldi
+Casilla:			susi@rina.com
+Mensaje:
+				Hola, soy Susana.
+-----------------------------------------------------------------
+
+Fecha:			Sat, 11 Dec 2021 00:24:43 +0000
+Nombre:		Francisco de Ayala
+Casilla:			pancho@ayala.com
+Mensaje:
+				$$$$$$$$$$$$$$$$$$$$$$$$$
