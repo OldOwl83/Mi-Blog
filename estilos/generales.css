@@ -42,7 +42,7 @@ body
     max-width: 1200px;
     margin: auto;
 
-    background: linear-gradient(135deg, white 20%, var(--fondo_claro_clr) 45%);
+    background: linear-gradient(135deg, white 500px, var(--fondo_claro_clr) 1000px);
 }
 
 @media screen and (min-width: 1601px)

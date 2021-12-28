@@ -2,7 +2,7 @@ p.publicaciones
 {
     margin: 10px 0;
 
-    font-family: 'Cantarell', serif;
+    font-family: 'Cantarell', sans-serif;
     font-size: 120%;
     text-align: justify;
     text-indent: 40px;
@@ -49,13 +49,28 @@ span.imagenes
     font-family: 'Arial', sans-serif;
     text-align: center;
     text-indent: 0;
+    cursor: pointer;
+
+    transition: filter 0.3s ease-in, width 0.3s linear;
+}
+
+span.imagenes:hover
+{
+    filter: sepia(90%);
+}
+
+.imagenes.expand
+{
+    width: 96% !important;
+
+    filter: none !important;
 }
 
 ul.publicaciones
 {
     margin: 10px 0 10px 18px;
 
-    font-family: 'Cantarell', serif;
+    font-family: 'Cantarell', sans-serif;
     font-size: 120%;
     text-align: justify;
     list-style-position: outside;
@@ -115,4 +130,15 @@ details.publicaciones p, details.publicaciones a
 .publicaciones img
 {
     width: 100%;
+}
+
+.enlace_publ
+{
+    color: #99581c;
+    cursor: pointer;
+}
+
+.enlace_publ:hover
+{
+    color: var(--detalles_2_masclr);
 }

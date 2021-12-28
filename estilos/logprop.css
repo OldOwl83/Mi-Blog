@@ -1,0 +1,27 @@
+#salida_lp
+{
+    width: 96%;
+
+    float: left;
+}
+
+#llamada_lp
+{
+    width: 32%;
+
+    float: right;
+}
+
+#recursion_lp
+{
+    width: 60%;
+
+    float: left;
+}
+
+#regex_lp
+{
+    width: 60%;
+
+    float: right;
+}

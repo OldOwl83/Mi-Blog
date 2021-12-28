@@ -10,6 +10,9 @@ function Inserta_entrada(arch_entrada)
         if(this.status == 200)
         {
             cont_princ.insertAdjacentHTML("afterBegin", this.responseText);
+            window.scroll(0, 0);
+
+            Ampliar_imagenes();
 
             switch(arch_entrada)
             {
@@ -19,7 +22,7 @@ function Inserta_entrada(arch_entrada)
                     break;
             }
         }else if(this.status == 404)
-            cont_princ.insertAdjacentHTML("afterBegin", "<h4>Página en construcción (" + encodeURI(arch_entrada) + ")</h4><p>Disculpe las molestias. Ya puede visitar las siguientes entradas: <ul><li>Sobre este blog</li><li>Contacto</li><li>Batalla Naval</li><li>BuscaBombas</li><li>Calculín</li><li>BlackJack</li>");
+            cont_princ.insertAdjacentHTML("afterBegin", "<h4>Página en construcción (" + encodeURI(arch_entrada) + ")</h4><p>Disculpe las molestias. Ya puede visitar las siguientes entradas: <ul class='publicaciones'><li>Sobre este blog</li><li>Contacto</li><li>Batalla Naval</li><li>BuscaBombas</li><li>Calculín</li><li>BlackJack</li><li>Este blog</li><li>logprop</li><li>Asignar el constructor...</li><li>C-Gestor</li></ul>");
         else
             cont_princ.insertAdjacentHTML("afterBegin", "<h4>Ocurrió un problema con el servidor. Disculpe las molestias</h4>");
     }

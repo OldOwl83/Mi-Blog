@@ -21,10 +21,10 @@ if(isset($_POST["casilla"]))
 
     fclose($archivo);
 
-    echo "<h3>Buzón de mensajes</h3><p>El mensaje fue enviado correctamente. Muchas gracias por tu interés. Pronto recibirás una respuesta.</p>";
+    echo "<h3>Buzón de mensajes</h3><p class='publicaciones'>El mensaje fue enviado correctamente. Muchas gracias por tu interés. Pronto recibirás una respuesta.</p>";
 
 
-    mail("mi_mail@mi_mail.com", "Nuevo mensaje en Hello Code!", "¡¡¡Llegó nuevo mensaje!!!", "From: mi_mail@mi_mail.com\r\nContent-type: text/html; charset=UTF-8");
+    mail("mi_mail@mi_mail.com", "Nuevo mensaje en Hello Code!", "¡¡¡Llegó nuevo mensaje a HelloCode!!!", "From: mi_mail@mi_mail.com\r\nContent-type: text/html; charset=UTF-8");
 
 }else
 {

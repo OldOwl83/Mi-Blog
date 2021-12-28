@@ -1,0 +1,27 @@
+#linea_blog
+{
+    width: 50%;
+    padding: 14px;
+    padding-bottom: 8px;
+
+    float: right;
+}
+
+#linea_blog img
+{
+    margin-bottom: 12px;
+}
+
+#codigo_menulateral
+{
+    width: 50%;
+
+    float: left;
+}
+
+#responsive_mb
+{
+    width: 38%;
+
+    float: right;
+}

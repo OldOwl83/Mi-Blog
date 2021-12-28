@@ -1,0 +1,51 @@
+#FBF1_lp
+{
+    width: 96%;
+
+    float: left;
+}
+
+#F_hijas_lp
+{
+    width: 40%;
+
+    float: right;
+}
+
+#FBF2_lp
+{
+    width: 96%;
+    margin-bottom: 30px;
+
+    float: left;
+}
+
+#FBF3_lp
+{
+    width: 96%;
+
+    float: left;
+}
+
+#FBF32_lp
+{
+    width: 96%;
+    margin-bottom: 30px;
+
+    float: left;
+}
+
+#formula4_lp
+{
+    width: 50%;
+    margin-bottom: 10px;
+    float: left;
+}
+
+#clases_final_lp
+{
+    display: block;
+    width: 96%;
+
+    float: none;
+}

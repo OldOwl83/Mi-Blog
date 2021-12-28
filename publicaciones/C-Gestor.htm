@@ -1,0 +1,55 @@
+<div class="fichas_t">
+    <h5><span class="material-icons">assignment</span> FICHA TÉCNICA</h5>
+    <ul>
+        <li><span class="subtitulos">Nombre</span>: C-Gestor</li>
+        <li><span class="subtitulos">Período de desarrollo</span>: mayo-agosto 2021</li>
+        <li><span class="subtitulos">Lenguaje</span>: C</li>
+        <li><span class="subtitulos">Categoría</span>: Gestor de base de datos</li>
+        <li><span class="subtitulos">Implementaciones destacadas</span>: memoria dinámica, aritmética de punteros, diseño y manejo de archivos</li>
+        <li><a href="archivos/C-Gestor.zip" download="C-Gestor.zip"><span class="material-icons">arrow_forward</span> Descargar el ejecutable para Windows</a></li>
+        <li><a href="https://github.com/OldOwl83/C-Gestor" target="_blank"><span class="material-icons">arrow_forward</span> Ir al código</a></li>
+    </ul>
+</div>
+
+<h3>C-Gestor</h3>
+
+<h4>Presentación</h4>
+
+ <p class="publicaciones">Si alguien se propone desarrollar un gestor de bases de datos comerciales, sin duda su mejor opción no es hacer una aplicación de consola en C. Este programa comenzó como un ejercicio escolar que se fue extendiendo más de la cuenta, un poco en el afán de recrear las estructuras de tablas relacionales sin apelar a un sistema que soporte un lenguaje dedicado como SQL, y también por probar formas más elegantes de interactuar con el usuario en una terminal de <em>shell</em>. Sin embargo, más allá de eso, este ejercicio fue una buena excusa para poner en práctica algunas funcionalidades distintivas de C, como la definción y manipulación de <em>structs</em>, la aritmética de punteros, la memoria dinámica y el diseño y manejo de archivo de acceso aleatorio.</p>
+
+<h4>Estructura general de la base de datos y su manipulación</h4>
+
+<p class="publicaciones">C-Gestor crea y gestiona 4 tablas de registros: una para los clientes, otra para las categorías de clientes definidas por el usuario, otra para los modificadores que afectan la facturación de cada categoría de clientes, y la última para las ventas, respectivamente. Cada tipo de registro está asociado a una estructura de datos (<em>struct</em>) que, además de almacenar valores
+
+    <span class="imagenes" id="menu_princ_cg"><img src="imagenes/C-Gestor/menu_princ.png" alt="">Menú principal de C-Gestor</span>
+
+    intrínsecos a cada entidad, establece su relación con los demás: la estructura "cliente" contiene un vector "booleano" que indica las categorías a las que pertenece; la estructura "categoria" contiene un vector que indica los modificadores que la afectan, y finalmente, la estructura "ventas" tiene una referencia al cliente comprador, con lo cual puede obtenerse las categorías, e indirectamente los modificadores, que determinan su monto neto. De este modo, pudo establecerse una red de relaciones capaz de determinar, sin duplicación de información, el monto neto de cada venta a partir de su precio base y de las
+
+    <span class="imagenes" id="consul_cli_cg"><img src="imagenes/C-Gestor/consulta_clientes.png" alt="">Consulta de clientes por límite de facturación</span>
+
+    categorías a las que pertenece el cliente comprador, la facturación neta total y los pagos totales de cada cliente. C-Gestor ofrece un menú de ocho consultas a la base de datos que valen de muestra, pero podrían incorporarse muchas más.</p>
+
+<p class="publicaciones">Desde el punto de vista de la lectura y escritura de datos, C-Gestor mantiene permanentemente actualizados los archivos de las tablas correspondientes a la base de datos cargada en el sistema; lo que garantiza que no habrá pérdida de información ante un incidente de <em>hardware</em>; aunque ello también atenta contra el rendimiento del programa. Para mitigar este efecto, C-Gestor mantiene en memoria principal sendos <em>buffers</em> que replican constantemente los archivos en disco, ajustando su tamaño de acuerdo al crecimiento o
+
+    <span class="imagenes" id="lista_cli_cg"><img src="imagenes/C-Gestor/lista_clientes.png" alt="">Lista de clientes</span>
+
+    decrecimiento de las tablas respectivas. Ellos consisten en punteros a un vector del <em>struct</em> correspondiente a cada tabla, declarados globalmente para que puedan ser accedidos por todas la funciones del programa. Por regla general, el gestor localiza y valida la información en estos <em>buffers</em>, antes de acceder y alterar de manera directa los registros correspondientes en disco. Adicionalmente, C-Gestor permite guardar copias de seguridad de las bases, y cargarlas en sistema cuando se considere oportuno. Ello permite mantener varias bases distintas, pero sólo una permanece cargada en el sistema. Ello significa que el usuario debe ser cuidadoso al momento de cargar una base guardada, porque se perderán los cambios en la actual, si no son previamente guardados en una nueva copia.
+
+    <span class="imagenes" id="ventas_cg"><img src="imagenes/C-Gestor/ventas.png" alt="">Lista de ventas</span>
+</p>
+<p class="publicaciones">Un aspecto con bastante presencia en el código de C-Gestor es el de la presentación visual de la información y los menúes de interacción con el usuario. Se definió una función especial para enmarcar los letreros en pantalla según cuatro tipos: recuadro simple, recuadro doble, encabezados y menúes. Además, la librería de cada tabla contiene una función especial para desplegar sus registros en forma tabular. Lamentablemente, estas funciones son muy poco portables, ya que utilizan la codificación ASCII con que parece compilar GCC por defecto en Windows. Si se compila el mismo código en otra plataforma, la gráfica no va a ser la deseada.</p>
+
+<h4>Implementaciones especiales</h4>
+
+<ul class="publicaciones">
+    <li><span class="subtitulos">Punteros <em>void</em> y aritmética de punteros</span>: El código de este programa hace un uso bastante profuso de los punteros para tareas ordinarias, como pasaje de argumentos por referencia, manipulación de cadenas de caracteres y referencia a <em>buffers</em> de lectura y escritura. Por otra parte, un uso más sofisticado se lleva a cabo con punteros <em>void</em>, utilizados para poder pasar argumentos de cualquier tipo a funciones que son comunes a todas las tablas de datos (funciones CRUD en el archivo "lib_bd.c"). En C++, ello se habría implementado más fácilmente con <em>templates</em>, que permiten decidir el tipo de dato que se pasará a una función en tiempo de compilación. No siendo esto posible, y con la intención de reutilizar el código, en estos casos opté por pedir la dirección del dato a gestionar, su
+
+        <span class="imagenes" id="modif_clien_cg"><img src="imagenes/C-Gestor/modif_cliente.png" alt="">Opciones de modificación de un registro de cliente</span>
+
+        longitud y/o su posición relativa dentro de la lista de registros que componen la tabla correspondiente. Para el caso de la actualización de registros, cuando sólo debe modificarse un dato particular dentro de una estructura, se apeló a la aritmética de punteros para determinar el desplazamiento del dato dentro de la tabla general de registros donde se encuentra. Así, la función "Modificar_dato(...)" suele recibir como argumento la resta entre un puntero <em>void</em> al dato y otro puntero <em>void</em> al comienzo del <em>buffer</em> de la tabla, obteniendo el <em>offset</em> deseado, que además coincide en el archivo replicado por el <em>buffer</em>; por lo que la función también puede actualizar el dato particular en disco, sin necesidad de sobreescribir el registro completo.</li>
+    <li><span class="subtitulos">Diseño y manejo de archivos de acceso aleatorio</span>: Todos los registros de las tablas tienen un primer campo que es el ID de cada elemento. Todas las tablas, además, tanto en disco como en memoria, comienzan con un primer registro nulo (ID = 0) que, por una parte, evita el desplazamiento en 1 de los IDs con respecto a su posición "real" en la tabla, y por otra parte, permite reconocer el comienzo de los vectores cuando se los recorre
+
+        <span class="imagenes" id="menu_gestion_cg"><img src="imagenes/C-Gestor/menu_gestion.png" alt="">Menú de gestión de archivos</span>
+
+        en sentido decreciente (en sentido creciente se utiliza el EOF como marca de finalización del archivo, o la longitud lógica del vector). Por lo demás, todos los registros ocupan la posición correspondiente a su ID, y cuando una posición no tiene un ID asociado porque se ha eliminado el registro que la ocupaba (y aun no se ha ocupado con otro), se la sobreescribe con un registro nulo (ID = 0). De tal modo, se mantiene la correspondencia uno a uno entre IDs y posiciones, lo que permite acceder directamente a la ubicación en disco y en memoria de cualquier registro.</li>
+</ul>

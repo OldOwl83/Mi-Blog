@@ -1,0 +1,45 @@
+<h3>Asignar el constructor de una subclase desde la clase base en Python</h3>
+
+<h4>El problema</h4>
+
+<p class="publicaciones">No soy un experto en Python (ni en nada). Sin embargo, me he visto en la necesidad de resolver este problema y no he encontrado buenas respuestas en la Web, de modo que me dispongo a compartir mi solución.</p>
+
+<p class="publicaciones">¿Cómo lograr que un sistema de clases defina la subclase a la que pertenece una instancia, cuando ello no es indicado por el cliente de la librería? De hecho, lo más usual es que el propio programador asigne en el código el constructor adecuado para cada objeto. Sin embargo, no siempre ello puede decidirse <em>a priori</em>. Por ejemplo, en mi caso, este problema lo tuve con la calculadora de Tablas de Verdad del modulo "logprop", en donde todos los objetos de la clase "Formula" (originalmente, 'FBF') consisten en un árbol de objetos pertenecientes a las subclases de "Formula" (según sea su conectiva principal), incluido el objeto principal. El problema es que las fórmulas son ingresadas por el usuario, y el programador no sabe a qué subclase de "Formula" van a corresponder. Entonces, el objetivo fue lograr que el programa cliente, a la hora de crear un objeto 'Formula', llamara a la clase base, y que el propio sistema de clases definiera la subclase correspondiente a cada uno de los elementos integrantes de la misma (incluyéndola).</p>
+
+<h4>Primeros intentos, fallidos</h4>
+
+<p class="publicaciones">Mi primera opción, acaso la más obvia, fue reasignar un constructor de subclase dentro del constructor __init__ de la clase base al objeto para el cual se la invocaba:
+
+    <span class="imagenes" id="FBF1_lp"><img src="imagenes/Subclases_python/FBF1.png" alt="">Primera versión del constructor de la clase 'FBF': intenta reasignar un constructor para el objeto instanciado </span>
+</p>
+
+<p class="publicaciones">Sin embargo, esto no funcionó, y el lenguaje mostró a mi modo de ver un comportamiento bastante extraño: por una parte, las propiedades definidas en el constructor base eran reemplazadas por las propiedades definidas en los constructores hijos (lo cual, en todo caso, era deseable), pero el tipo de objeto de la fórmula principal seguía correspondiendo a
+
+<span class="imagenes" id="F_hijas_lp"><img src="imagenes/Subclases_python/F_CONJ1.png" alt=""><img src="imagenes/Subclases_python/F_ATOM1.png" alt="">Dos ejemplos de subclases hijas de 'FBF'</span>
+
+la clase padre, lo cual no era deseable, porque no podía acceder a los métodos definidos en las subclases.</p>
+<p class="publicaciones">Una variante polémica de esta implementación fue definir a las fórmulas pasadas por el cliente como "FBF", y atribuirles objetos de las subclases como propiedades, los cuales a su vez definirían a sus subfórmulas miembro como propiedades "FBF", las que a su vez tendrían propiedades definidas en las subclases. Esta opción, sin embargo, duplicaba la extensión de los árboles formulares y volvía muy difícil un diseño consistente de los métodos, que se aplicarían a tipos de objeto de naturaleza muy distinta, a pesar de estar dentro de la misma familia de clases:
+
+<span class="imagenes" id="FBF2_lp"><img src="imagenes/Subclases_python/FBF2.png" alt="">Atribución de objetos de las subclases como propiedades de los objetos de la clase madre</span>
+</p>
+
+<h4>Subiendo la mira</h4>
+
+<p class="publicaciones">La siguiente intentona hubo que trabajarla en el nivel previo de la instanciación de los objetos definidos por "FBF", modificando el método <code>__new__()</code> heredado de la clase "object". La idea era que, en esa etapa, el método "Descomponer_string()" analizara y validara la fórmula pasada por el cliente, y retornara, en lugar de un objeto, un constructor de la subclase correspondiente, dejando la inicialización del objeto a cargo de la misma:
+
+<span class="imagenes" id="FBF3_lp"><img src="imagenes/Subclases_python/FBF3.png" alt="">Uno de los primeros manoseos al método "especial" __new__() de la superclase</span>
+</p>
+
+<p class="publicaciones">Esto, sin embargo, conllevó un problema fatal. La subclase llamada debía sobreescribir el método <code>__new__()</code>, saltando la versión de la clase base, para no recaer en una recursión infinita. Pero la <a href="https://docs.python.org/es/3/reference/datamodel.html?highlight=__new__#object.__new__" target="_blank">documentación oficial de Python</a>, hasta donde llegó mi investigación, no dice cómo se hace eso. Al contrario, indica que la forma típica de instanciar un objeto es llamando al método super() (otra opción que se repite en la Web es llamar directamente al método <code>__new__()</code> de la clase <em>object</em>, pero al parece ello tampoco realiza un salto por sobre la clase inmediatamente superior). He intentado diversas variantes de esta solución, pero ninguna lograba sortear la recursión infinita o algún tipo de inconsistencia en la construcción de los objetos.
+
+    <span class="imagenes" id="FBF32_lp"><img src="imagenes/Subclases_python/FBF32.png" alt="">Otro intento desesperado por enderezar el descalabro sobre el método __new__()</span>
+
+</p>
+
+<h4>La solución, fea pero funciona</h4>
+
+<p class="publicaciones"> Esta hubiera sido la opción más adecuada, a mi juicio, desde el punto de vista de la arquitectura de software. Sin embargo, no funcionaba. La solución definitiva -y conceptualmente poco feliz- fue la de romper el parentesco formal entre la clase superior y las subclases. La primera seguiría siendo, a los ojos del cliente, la clase constructora de los objetos "FBF", pero internamente, el código devolvería instancias de las viejas subclases (F_CONJ, F_ATOM, etc) agrupadas en torno de una nueva clase base distinta ("Formula"), que definiera sus propiedades y métodos comunes. El cliente puede seguir llamando a los métodos del objeto instanciado (por ahora, el único que tiene el carácter de público es "Generar_tabla())", sin ni siquiera notar que, en realidad, el objeto que manipula es de una clase distinta a la que él llamó.
+
+    <span class="imagenes" id="clases_final_lp"><img src="imagenes/Subclases_python/FBF4.png" alt=""><img src="imagenes/Subclases_python/Formula4.png" alt="" id="formula4_lp"><img src="imagenes/Subclases_python/F_CONJ4.png" alt="">La versión definitiva de 'FBF', la nueva clase base "Formula". Ahora, las subclases de "Formula" no necesitan sobreescribir su constructor</span>
+</p>
+<p class="publicaciones">Para más información sobre el módulo "logprop", puede visitar <span class="enlace_publ" onclick="Inserta_entrada('publicaciones/logprop.htm')">su presentación en este mismo blog</span>.</p>

@@ -5,15 +5,16 @@ window.onload = function(){Filtrado_entradas(2); document.getElementById("filtro
 function Filtrado_entradas(filtro)
 {
     const entradas = [ //1º: Nombre visible de la entrada; 2º: ID de la entrada y nombre del archivo ".htm"; (3º en adelante: etiquetas en el orden de los "value"s de "filtros".); 3º: Lenguaje; 4º: Categoría; 5º: Complejidad. Si una entrada no tiene etiquetas correspondientes a un filtro, debe incluir un string vacío en su lugar.
-                    ["Base de datos de clientes", "BD_Clientes", "C", "Bases de datos", "Alta", "(sin clasificar)"],
-                    ["Calculín", "Calculin", "HTML5", "Calculadoras", "Baja", "eventListeners"],
-                    ["BuscaBombas", "Buscabombas", "HTML5", "Juegos", "Media", "Clases/Composicionalidad/eventListeners"],
-                    ["Catalón", "Catalon", "PHP", "Bases de datos", "Alta", "(sin clasificar)"],
+                    ["Este blog", "Mi_blog", "HTML5/PHP", "Página web", "Media", "AJAX/Responsive"],
+                    ["logprop", "logprop", "Python", "Calculadoras/Librerías", "Media", "POO/Composicionalidad/Recursión/Expresiones regulares"],
+                    ["BuscaBombas", "Buscabombas", "HTML5", "Juegos", "Media", "POO/Composicionalidad/eventListeners"],
                     ["BlackJack", "BlackJack", "Assembler x8086", "Juegos", "Alta", "Manejo de archivos/Generador de números aleatorios/Modo video"],
-                    ["CalculAssm", "CalculAssm", "Assembler x8086", "Calculadoras", "Baja", "(sin clasificar)"],
-                    ["Batalla Naval", "Batalla_Naval", "HTML5", "Juegos", "Media", "eventListeners/Drag and Drop/Animaciones CSS"],
-                    ["Este blog", "MDM_Blog", "HTML5/PHP", "Página web", "Media", "(sin clasificar)"],
-                    ["Recorrido del caballo", "Rec_Caballo", "C", "Algoritmos", "Baja", "(sin clasificar)"],
+                    ["C-Gestor", "C-Gestor", "C", "Bases de datos", "Alta", "Aritmética de punteros/Memoria dinámica/Manejo de archivos"],
+                    ["Batalla Naval", "Batalla_Naval", "HTML5", "Juegos", "Media", "eventListeners/Drag and Drop"],
+                    ["Calculín", "Calculin", "HTML5", "Calculadoras", "Baja", "eventListeners"],
+                    ["Catalón", "Catalon", "PHP", "Bases de datos", "Alta", "Sesiones/MySQL/AJAX/POO"],
+                    ["CalculAssm", "CalculAssm", "Assembler x8086", "Calculadoras", "Baja", ""],
+                    ["Recorrido del caballo", "Rec_Caballo", "C", "Algoritmos", "Baja", ""],
     ]
 
     const etiquetas = new Set;
@@ -22,7 +23,7 @@ function Filtrado_entradas(filtro)
     {
         let etiqs = entrada[filtro].split("/");
 
-        etiqs.forEach((item) => {etiquetas.add(item);});
+        etiqs.forEach((item) => {if(item != "") etiquetas.add(item);});
     }
 
     const zona_etiquetas = document.getElementById("zona_etiquetas");

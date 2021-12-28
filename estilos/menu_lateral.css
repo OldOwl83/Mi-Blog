@@ -8,16 +8,16 @@
     display: block;
     width: 16%;
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 150px;
     box-sizing: border-box;
     z-index: 1;
 }
 
 #tit_menu_lat
 {
-    font_size: 120%;
-    color: var(--detalles_1_clr);
-    border-bottom: 1px solid var(--detalles_2_clr);
+    font-size: 130%;
+    color: #8f0451;
+    border-bottom: 3px solid #8f0451;
 
 }
 

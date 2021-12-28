@@ -26,12 +26,17 @@
         <link rel="stylesheet" href="estilos/buscabombas.css" type="text/css">
         <link rel="stylesheet" href="estilos/calculin.css" type="text/css">
         <link rel="stylesheet" href="estilos/black_jack.css" type="text/css">
+        <link rel="stylesheet" href="estilos/mi_blog.css" type="text/css">
+        <link rel="stylesheet" href="estilos/logprop.css" type="text/css">
+        <link rel="stylesheet" href="estilos/subclases_py.css" type="text/css">
+        <link rel="stylesheet" href="estilos/c_gestor.css" type="text/css">
 
         <script type="text/javascript" src="js/filtros_menu.js" defer></script>
         <script type="text/javascript" src="js/inserta_entrada.js"></script>
         <script type="text/javascript" src="js/envio_mensajes.js"></script>
         <script type="text/javascript" src="sitios/BuscaBombas/clase_Buscabombas.js"></script>
         <script type="text/javascript" src="js/insertar_buscabombas.js"></script>
+        <script type="text/javascript" src="js/ampliar_imag.js"></script>
 
     </head>
 
@@ -56,7 +61,7 @@
 
                     <div class="articulos" onclick="Inserta_entrada()"><p>Escribí tu código, escribí tu mundo...</p></div>
 
-                    <div class="articulos" onclick="Inserta_entrada()"><p>El <em>software</em> como segunda naturaleza</p></div>
+                    <div class="articulos" onclick="Inserta_entrada('publicaciones/articulos/subclases_py.htm')"><p>Asignar el constructor de una subclase desde la clase base en Python</p></div>
 
                 </div>
             </div>
@@ -66,10 +71,10 @@
 
         <nav id="menu_lateral">
 
-            <h5 id="tit_menu_lat">Códigos</h5>
+            <h5 id="tit_menu_lat">Programas</h5>
 
             <div id="cont_filtros">
-                <h5 id="tit_filtro">Organizar por...</h5>
+                <h5 id="tit_filtro">Clasificar por...</h5>
 
                 <!-- Los values de "filtros" deben corresponder a la columna en que aparecen las etiquetas en el array "entradas" de la función "Filtrado_entradas" -->
                 <select id="filtros" onchange="Filtrado_entradas(this.value);">
@@ -90,7 +95,7 @@
 
             <div id="contenedor_princ">
 
-
+            
 
             </div>
 

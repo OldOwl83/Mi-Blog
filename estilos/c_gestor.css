@@ -1,0 +1,41 @@
+#menu_princ_cg
+{
+    width: 60%;
+
+    float: left;
+}
+
+#consul_cli_cg
+{
+    width: 64%;
+
+    float: right;
+}
+
+#lista_cli_cg
+{
+    width: 70%;
+
+    float: left;
+}
+
+#ventas_cg
+{
+    width: 64%;
+
+    float: right;
+}
+
+#modif_clien_cg
+{
+    width: 64%;
+
+    float: right;
+}
+
+#menu_gestion_cg
+{
+    width: 60%;
+
+    float: right;
+}

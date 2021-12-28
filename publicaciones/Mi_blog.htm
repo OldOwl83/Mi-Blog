@@ -1,0 +1,36 @@
+<div class="fichas_t">
+    <h5><span class="material-icons">assignment</span> FICHA TÉCNICA</h5>
+    <ul>
+        <li><span class="subtitulos">Nombre</span>: Hello Code!</li>
+        <li><span class="subtitulos">Período de desarrollo</span>: diciembre 2021</li>
+        <li><span class="subtitulos">Stack</span>: HTML5 - PHP</li>
+        <li><span class="subtitulos">Categoría</span>: Sitio Web</li>
+        <li><span class="subtitulos">Implementaciones destacadas</span>: AJAX, <em>server side</em>, menúes de navegación, <em>responsive design</em></li>
+    </ul>
+</div>
+
+<h3>Este blog</h3>
+
+<h4>Presentación</h4>
+
+ <p class="publicaciones">Espero que este blog pueda presentarse a sí mismo. No es más que lo que se ve: un tablón donde presentar algunos comentarios sobre mis trabajos y especulaciones en programación, intentando hacer foco en los aprendizajes realizados, las dificultades encontradas y las soluciones alcanzadas. En todo caso, se trata del primer sitio web que instalé en un servidor remoto, de modo que, más allá de aciertos y errores, es para mí una gran fuente de experiencias y conocimientos prácticos.</p>
+
+<h4>Implementaciones especiales</h4>
+
+<ul class="publicaciones">
+    <li><span class="subtitulos">AJAX</span>: Todo lo que sucede dentro de este sitio, se despliega en un mismo documento HTML. Los únicos elementos permanentes son el header, los menúes de navegación y un contenedor principal en el &ltmain&gt donde se cargan todos los artículos y secciones. Éstos son recuperados del servidor mediante el método XMLHttpRequest() e insertados
+
+        <span class="imagenes" id="linea_blog"><img src="imagenes/linea_enc.png" alt="">Línea distintiva del sitio</span>
+
+        en el contenedor principal con JS. Técnicas similares a ésta no las he visto implementadas en sitios que no descansan sobre <em>frameworks</em>, a pesar de su sencillez, elegancia y fluidez para la navegación del usuario. Supongo que debe haber un buen motivo para ello. Sin embargo, con las pruebas que llevo hechas para esta página, y con su poca carga de contenido, considero que el rendimiento es muy bueno.</li>
+    <li><span class="subtitulos"><em>Server side</em></span>: Este sitio tiene todavía muy poco de PHP, y está todo concentrado en la sección de "Contacto". Los mensajes enviados por formulario son almacenados en un archivo de texto plano en el servidor, y se remite un mail a una casilla personal notificando el ingreso de los mismos. Está previsto en un futuro próximo implementar un espacio de comentarios particular para cada publicación, que dejará visibles los mensajes para todos los visitantes. Para usos más sofisticados de PHP, remito a la entrada correspondiente al sistema de gestión de Bibliotecas "Catalón".</li>
+    <li><span class="subtitulos">Menúes de navegación</span>: Entre los elementos estables de la página están sus menúes de
+
+        <span class="imagenes" id="codigo_menulateral"><img src="imagenes/MiBlog/codigo_menulateral.png" alt="">Vector con las etiquetas de las publicaciones, y su registro en un <em>set</em></span>
+
+        navegación. Uno de ellos, el que se aloja horizontalmente en la parte superior, es totalmente ordinario. El otro, en cambio, se ajusta dinámicamente al criterio de clasificación de las publicaciones seleccionado por el usuario. El despliegue de su contenido está mayormente automatizado: el programador simplemente carga en un vector las etiquetas correspondientes a cada publicación, según un orden predeterminado. El algoritmo se encarga de leer esos datos y almacenar en un objeto JS tipo <em>set</em> los diversos valores ingresados, evitando la duplicación de etiquetas. Luego, en una iteración de ese <em>set</em> se van desplegando las entradas correspondientes en el &ltnav&gt del documento HTML.</li>
+        <li>
+            <span class="imagenes" id="responsive_mb"><img src="imagenes/MiBlog/responsive_miblog.png" alt="">Vista del blog en una pantalla menor a 840px</span>
+
+            <span class="subtitulos"><em>Responsive design</em></span>: Intenté que el diseño de la página se adapte automáticamente a los distintos anchos del <em>viewport</em> de la mejor manera posible, sin recurrir a librerías especiales como <em>Bootstrap</em>, ni a técnicas estandarizadas como <em>grid-view</em>. El método básico consistió en definir el valor de las propiedades <em>width</em> y <em>font-size</em> mediante unidades relativas (principalmente con "%") para la mayoría de los elementos del DOM. Lo mismo se hizo con algunos márgenes significativos. Adicionalmente, se definieron <em>media queries</em> para variar el tamaño de la fuente para el &ltbody&gt, ya que de él depende el tamaño relativo de la fuente del resto de los elementos. Además, escribí una hoja de estilos especial para pantallas menores a 840 píxeles de ancho (pensada para móviles), en la que principalmente se fija la posición de ambos menúes de navegación en la parte superior del tablón central, ocupando todo el ancho de la página. También se establece, por regla general, el ancho de las imágenes al 100%, para que puedan apreciarse y no se dejen rodear por columnas de texto demasiado pequeñas.</li>
+</ul>
