@@ -1,6 +1,6 @@
 #salida_lp
 {
-    width: 96%;
+    width: 50%;
 
     float: left;
 }
@@ -14,14 +14,21 @@
 
 #recursion_lp
 {
-    width: 60%;
+    width: 50%;
 
     float: left;
 }
 
+#operaciones_lp
+{
+    width: 30%;
+
+    float: right;
+}
+
 #regex_lp
 {
-    width: 60%;
+    width: 50%;
 
     float: right;
 }

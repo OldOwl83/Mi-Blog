@@ -1,10 +1,10 @@
 #linea_blog
 {
-    width: 50%;
+    width: 44%;
     padding: 14px;
     padding-bottom: 8px;
 
-    float: right;
+    float: left;
 }
 
 #linea_blog img
@@ -14,14 +14,14 @@
 
 #codigo_menulateral
 {
-    width: 50%;
+    width: 46%;
 
-    float: left;
+    float: right;
 }
 
 #responsive_mb
 {
-    width: 38%;
+    width: 26%;
 
     float: right;
 }

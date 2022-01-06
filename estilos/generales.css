@@ -16,8 +16,9 @@
     --detalles_fondo_claro: #eebf7f;
     --fondo_oscuro_clr: orange;
     --detalles_1_clr: #8c00d8; /*violeta*/
+    --detalles_1_masclr: #c18bff; /*violeta*/
     --detalles_2_clr: orangered; /*naranja*/
-    --detalles_2_masclr: #c0824a;
+    --detalles_2_masclr: #c0824a; /*naranja*/
     --bordes_suaves_clr: #999; /*gris*/
 }
 
@@ -155,9 +156,11 @@ h5 span
     position: relative;
     min-height: 400px;
     margin: 120px 4% 10px 22%;
+}
 
-    /* background-image: url("../imagenes/portada.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover; */
+#img_portada
+{
+    display: block;
+    margin: 0px auto 0;
+    width: 96%;
 }
