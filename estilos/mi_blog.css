@@ -1,20 +1,15 @@
-#linea_blog
+#logo_blog
 {
-    width: 44%;
+    width: 26%;
     padding: 14px;
     padding-bottom: 8px;
 
-    float: left;
+    float: right;
 }
 
-#linea_blog img
+#objetos_entr
 {
-    margin-bottom: 12px;
-}
-
-#codigo_menulateral
-{
-    width: 46%;
+    width: 24%;
 
     float: right;
 }

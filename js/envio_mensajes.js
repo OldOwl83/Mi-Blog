@@ -9,8 +9,8 @@ function Enviar_mensaje()
     {
         cont_princ.innerHTML = "";
         cont_princ.insertAdjacentHTML("afterBegin", this.responseText);
-    }
+    };
 
-    pedido.open("POST", "backend/buzon_msg.php", true);
+    pedido.open("POST", `${ origen_URL }backend/buzon_msg.php`, true);
     pedido.send(form);
 }

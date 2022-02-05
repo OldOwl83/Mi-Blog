@@ -32,11 +32,15 @@
         <link rel="stylesheet" href="estilos/c_gestor.css" type="text/css">
 
         <script type="text/javascript" src="js/filtros_menu.js" defer></script>
+        <script type="text/javascript" src="js/data/entradas_menu_lateral.js" defer></script>
         <script type="text/javascript" src="js/inserta_entrada.js"></script>
         <script type="text/javascript" src="js/envio_mensajes.js"></script>
         <script type="text/javascript" src="sitios/BuscaBombas/clase_Buscabombas.js"></script>
         <script type="text/javascript" src="js/insertar_buscabombas.js"></script>
         <script type="text/javascript" src="js/ampliar_imag.js"></script>
+        <script type="text/javascript" src="js/routing.js"></script>
+
+        <base href="https://hellocode-blog.net/" target="_blank" />
 
     </head>
 
@@ -78,10 +82,9 @@
 
                 <!-- Los values de "filtros" deben corresponder a la columna en que aparecen las etiquetas en el array "entradas" de la función "Filtrado_entradas" -->
                 <select id="filtros" onchange="Filtrado_entradas(this.value);">
-                    <option value="2">Lenguaje/Stack</option>
-                    <option value="3">Categoría</option>
-                    <option value="4">Complejidad</option>
-                    <option value="5">Implementaciones</option>
+                    <option value="lenguajes">Lenguaje/Stack</option>
+                    <option value="categorias">Categoría</option>
+                    <option value="implementaciones">Implementaciones</option>
                 </select>
             </div>
 
@@ -95,7 +98,6 @@
 
             <div id="contenedor_princ">
 
-                <img src="imagenes/portada.png" alt="portada" id="img_portada">
 
             </div>
 
@@ -104,11 +106,11 @@
         <footer>
 
             <ul id="footer_data">
-                <li>© 2021 Mauro Donnantuoni Moratto</li>
+                <li>© 2022 Mauro Donnantuoni Moratto</li>
                 <li><a href="https://github.com/OldOwl83">GitHub: OldOwl83</a></li>
                 <li><a href="https://hellocode-blog.net/">Hello Code!</a></li>
             </ul>
-            <p id=slogan>El mundo es un código que siempre puede reescribirse.</p>
+            <p id="slogan">El mundo es un código que siempre puede reescribirse.</p>
             <img src="imagenes/developed.png" id="developed" draggable="false" />
 
         </footer>
