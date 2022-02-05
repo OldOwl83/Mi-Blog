@@ -1,30 +1,30 @@
 /*
 *               DEFINICIÓN DE LA CLASE BUSCABOMBAS
 
-*   La clase Buscabombas es una plantilla para la generación de tableros 
-de juego de un clon del Buscaminas. El tablero es devuelto por el constructor 
-de la clase como un elemento del DOM tipo "div", personalizable desde el 
-punto de vista de sus atributos HTML y de su aspecto gráfico (salvo en lo 
-que respecta a sus dimensiones, que mantienen una proporción de 1:2; el 
-tamaño, sin embargo, es modificable mediante un método público). El tablero 
-en sí no viene con un ID o una CLASE predefinidos, pero los casilleros que 
-lo conforman, sí. No debe modificarse el ID de los casilleros, ya que son 
-esenciales para el funcionamiento del juego. Además, los casilleros vienen 
-con clases predefinidas, útiles para diferenciar el aspecto visual de los 
+*   La clase Buscabombas es una plantilla para la generación de tableros
+de juego de un clon del Buscaminas. El tablero es devuelto por el constructor
+de la clase como un elemento del DOM tipo "div", personalizable desde el
+punto de vista de sus atributos HTML y de su aspecto gráfico (salvo en lo
+que respecta a sus dimensiones, que mantienen una proporción de 1:2; el
+tamaño, sin embargo, es modificable mediante un método público). El tablero
+en sí no viene con un ID o una CLASE predefinidos, pero los casilleros que
+lo conforman, sí. No debe modificarse el ID de los casilleros, ya que son
+esenciales para el funcionamiento del juego. Además, los casilleros vienen
+con clases predefinidas, útiles para diferenciar el aspecto visual de los
 mismos según su estado en el desarrollo del juego (ver interfaz pública).
 
-*   Desde el punto de vista de la implementación, la definición de esta clase 
-intenta mantener bien diferenciados el nivel lógico del juego y el 
-mantenimiento de los elementos DOM que permiten la interacción con el jugador; 
-definiendo métodos que corresponden a uno u otro nivel, y que sólo se 
-comunican entre ellos por parámetros (en los casos en que intervienen en el 
-desarrollo del juego; estos métodos "interactivos" son DisparoDOM(), 
-DisparoLogico() y ToqueCasilleroDOM()). Los métodos que incluyen "DOM" en el 
+*   Desde el punto de vista de la implementación, la definición de esta clase
+intenta mantener bien diferenciados el nivel lógico del juego y el
+mantenimiento de los elementos DOM que permiten la interacción con el jugador;
+definiendo métodos que corresponden a uno u otro nivel, y que sólo se
+comunican entre ellos por parámetros (en los casos en que intervienen en el
+desarrollo del juego; estos métodos "interactivos" son DisparoDOM(),
+DisparoLogico() y ToqueCasilleroDOM()). Los métodos que incluyen "DOM" en el
 nombre pertenecen al segundo nivel; el resto son todos lógicos.
 
-*   Además, por fuera de la propia clase, se definen algunos objetos que 
-funcionan como constantes simbólicas tipo ENUM, y un constructor de objetos 
-"CasilleroLogico", que sirven como estructuras de datos utilizadas internamente 
+*   Además, por fuera de la propia clase, se definen algunos objetos que
+funcionan como constantes simbólicas tipo ENUM, y un constructor de objetos
+"CasilleroLogico", que sirven como estructuras de datos utilizadas internamente
 por la clase "Buscabombas".
 
 
@@ -33,102 +33,102 @@ por la clase "Buscabombas".
 * Constantes simbólicas tipo ENUM:
 
             TAMANIO_TABLERO_Enum:
-                    Define tres tamaños posibles para un tablero de juego de 
-                    la clase Buscabombas: .GRANDE, .MEDIANO y .CHICO. Los 
-                    valores numéricos correspondientes refieren a la cantidad 
+                    Define tres tamaños posibles para un tablero de juego de
+                    la clase Buscabombas: .GRANDE, .MEDIANO y .CHICO. Los
+                    valores numéricos correspondientes refieren a la cantidad
                     de casilleros que componen el tablero, y siempre deben ser
                     valores de la imagen de la función f(x) = 2*x^2
-                    
+
             NIVEL_JUEGO_Enum:
                     Define tres niveles de dificultad para el tablero de juego:
-                    .DIFICIL, .INTERMEDIO y .FACIL. Los valores numéricos 
+                    .DIFICIL, .INTERMEDIO y .FACIL. Los valores numéricos
                     correspondientes refieren a la proporción entre bombas y
                     casilleros del tablero, expresada en el rango 0 a 1.
-                    
+
             ESTADO_JUEGO_Enum:
                     Define tres estados posibles para el tablero de juego:
-                    .ABIERTO, .GANADO y .PERDIDO. El primero refiere a un estado 
-                    de inconclusión del juego, mientras que los dos segundos 
+                    .ABIERTO, .GANADO y .PERDIDO. El primero refiere a un estado
+                    de inconclusión del juego, mientras que los dos segundos
                     son los valores devueltos por el juego cuando concluye.
-            
-            
-* Llamada al constructor: 
 
-            new Buscabombas(TAMANIO_TABLERO_Enum, NIVEL_JUEGO_Enum, CallBack_recibe_resultado): 
-                    Devuelve un elemento "div" del DOM que representa un tablero 
-                    listo para insertar en el documento HTML y jugar. Al concluir el 
-                    juego, el objeto creado devuelve a la función del tercer parámetro 
-                    la propiedad pública ".estado" con los valores 
+
+* Llamada al constructor:
+
+            new Buscabombas(TAMANIO_TABLERO_Enum, NIVEL_JUEGO_Enum, CallBack_recibe_resultado):
+                    Devuelve un elemento "div" del DOM que representa un tablero
+                    listo para insertar en el documento HTML y jugar. Al concluir el
+                    juego, el objeto creado devuelve a la función del tercer parámetro
+                    la propiedad pública ".estado" con los valores
                     "ESTADO_JUEGO_Enum.GANADO" o "ESTADO_JUEGO_Enum.PERDIDO".
 
 * Propiedades (todas deberían tratarse como de sólo lectura):
 
-            .estado = ESTADO_JUEGO_Enum: 
+            .estado = ESTADO_JUEGO_Enum:
                     Indica si el juego está inconcluso (ABIERTO) o no (GANADO o PERDIDO).
-                
-            .tableroDOM = elemento DOM: 
-                    Esta variable contiene al elemento DOM que oficia de tablero 
-                    de juego y sobre el cual se desarrolla todo el proceso. Es un 
-                    elemento tipo "div", al que se le puede asignar un ID, una 
-                    clase o cualquier otro atributo HTML, salvo el tamaño (width 
+
+            .tableroDOM = elemento DOM:
+                    Esta variable contiene al elemento DOM que oficia de tablero
+                    de juego y sobre el cual se desarrolla todo el proceso. Es un
+                    elemento tipo "div", al que se le puede asignar un ID, una
+                    clase o cualquier otro atributo HTML, salvo el tamaño (width
                     y height), que debería establecerse mediante el método público
-                    "establecerTamTableroDOM()". También puede personalizarse con 
-                    estilos CSS (nuevamente, evitando alterar el tamaño), sin 
+                    "establecerTamTableroDOM()". También puede personalizarse con
+                    estilos CSS (nuevamente, evitando alterar el tamaño), sin
                     afectar la propiedad "display" ni los modificadores del "grid".
-                        
+
             .contadorBloqueosDOM = elemento DOM:
-                    Esta variable contiene un elemento tipo "div" que lleva la 
-                    cuenta de la cantidad de casilleros que fueron bloqueados con 
-                    el botón derecho del ratón (y que, por tanto, el jugador 
-                    presume que contienen bombas). Las únicas propiedades CSS 
-                    predefinidas para este objeto son "display" y los modificadores 
-                    "grid" para centrar el texto. Todos los demás atributos HTML y 
+                    Esta variable contiene un elemento tipo "div" que lleva la
+                    cuenta de la cantidad de casilleros que fueron bloqueados con
+                    el botón derecho del ratón (y que, por tanto, el jugador
+                    presume que contienen bombas). Las únicas propiedades CSS
+                    predefinidas para este objeto son "display" y los modificadores
+                    "grid" para centrar el texto. Todos los demás atributos HTML y
                     CSS pueden ser personalizados por el usuario.
-                
+
 * Métodos:
 
-            .EstablecerTamTableroDOM(pxAncho): 
-                    Es la manera regular de modificar el tamaño de ".tableroDOM" 
+            .EstablecerTamTableroDOM(pxAncho):
+                    Es la manera regular de modificar el tamaño de ".tableroDOM"
                     (por defecto tiene de ancho la cantidad de casilleros por fila
-                    multiplicado por 30px). Como argumento recibe un número entero 
+                    multiplicado por 30px). Como argumento recibe un número entero
                     que representa el ancho total del tablero en píxeles.
-                        
+
 * Clases de casilleros:
 
             El juego determina clases básicas para los casilleros DOM que integran
             el tablero DOM. Con los mismos, puede diferenciarse los estilos CSS
             para cada estado de las casillas. Las clases predefinidas son:
-            
-            - "casillero": 
+
+            - "casillero":
                     Clase común a todos los casilleros, pensada para establecer
                     propiedades comunes, como bordes o márgenes.
-            
+
             - "oculto":
                     Clase correspondiente a los casilleros que aun no han sido
                     disparados por el jugador. Al inicio, todo los casilleros
                     pertenecen a esta clase.
-                    
+
             - "bloqueado":
-                    Clase correspondiente a los casilleros activos marcados por 
+                    Clase correspondiente a los casilleros activos marcados por
                     el jugador con el botón derecho del ratón. Los mismos no pueden
                     ser disparados, aunque sí pueden ser desbloqueados de la misma
-                    manera como se bloquearon. Se recomienda diferenciarlos con 
+                    manera como se bloquearon. Se recomienda diferenciarlos con
                     un tono del background ligeramente diferente del de "oculto".
-                    
+
             - "tocado":
-                    Clase correspondiente a los casilleros disparados por el 
-                    jugador. Éstos quedan inactivos, y si tienen casilleros 
+                    Clase correspondiente a los casilleros disparados por el
+                    jugador. Éstos quedan inactivos, y si tienen casilleros
                     con bombas alrededor, muestran la suma de los mismos. Se recomienda
                     diferenciarlos de los "ocultos" con un color del background
                     notablemente distinto.
-                    
+
             - "bomba":
-                    Clase correspondiente a los casilleros que contienen bomba, 
-                    al momento en que el jugador ha disparado sobre una bomba y, 
+                    Clase correspondiente a los casilleros que contienen bomba,
+                    al momento en que el jugador ha disparado sobre una bomba y,
                     por tanto, ha perdido el juego. Esta clase permite mostrar al
                     jugador los casilleros prohibidos una vez concluido el juego.
                     Previamente, estos casilleros pertenecen a la clase "oculto".
-                    
+
             - Adicionalmente, se recomienda distinguir a los casilleros incluidos
             en el selector CSS ".bloqueado.bomba" para que el jugador pueda advertir
             si bloqueó casilleros incorrectamente, al momento de la derrota.
@@ -174,15 +174,15 @@ class Buscabombas
 			this.bombas = Math.trunc(this.tam * nivel)
 		else
 			throw "Dificultad inválida";
-        
+
         this.contadorTocados = this.tam - this.bombas; //Contador para evaluar el triunfo
-        
+
         //Variables para desambiguar el valor de "this" en las llamadas a las funciones que escuchan eventos
         this.GestorDisparo = this.GestorEventoDisparo.bind(this);
         this.GestorBloqueo = this.BloqueoCasilleroDOM.bind(this);
-        
+
         this.Final = RetornoResultado; //Variable para poder llamar al CallBack pasado por parámetro desde las funciones de culminación del juego
-        
+
         //Llamada a funciones preparatorias del juego
 		this.RellenarTableroLogico();
 
@@ -253,7 +253,7 @@ class Buscabombas
 			let casDOM = document.createElement("div");
 			casDOM.id = "_" + casillero.pos_x + "_" + casillero.pos_y; //Formación del ID de cada casillero
 			casDOM.className = "casillero oculto";
-            
+
             if(casillero.bomba)
                 casDOM.classList.add("b"); //La clase "b" permite identificar internamente a los casilleros DOM con bomba, mientras pertenezcan a la clase "oculto". Esta marca evita tener que generar un nuevo ciclo sobre los casilleros al momento de la derrota, frente a la necesidad de subsumirlos bajo la clase "bomba".
 
@@ -336,10 +336,10 @@ class Buscabombas
 
             return;
         }
-        
+
         casilleroLogico.tocado = true; //Cambio de estado de la casilla lógica
         this.ToqueCasilleroDOM(casilleroLogico); //Llamada al cambio de estado de la casilla DOM
-        
+
         if(this.EvaluarTriunfo()) //Pregunta si hay triunfo
             return;
 
@@ -391,26 +391,26 @@ class Buscabombas
             this.Final(this.estado = ESTADO_JUEGO_Enum.GANADO); //Se devuelve el nuevo estado del juego al CallBack pasado al constructor por parámetros.
         }
     }
-    
+
     //Gestión de la derrota
 	Explosion()
 	{
 		this.DesactivacionTableroDOM(true);
-        
+
         this.Final(this.estado = ESTADO_JUEGO_Enum.PERDIDO); //Se devuelve el nuevo estado del juego al CallBack pasado al constructor por parámetros.
 	}
-    
+
     //Cancelación de las escuchas de eventos de todas las casillas para dejar al tablero muerto. Si el argumento declara la derrota, se le asigna la clase "bomba" a los casilleros con bomba, para su tratamiento de estilo.
     DesactivacionTableroDOM(derrota = false)
     {
         let casillerosDOM = document.getElementsByClassName("casillero");
-        
+
         for(let casillero of casillerosDOM)
         {
             casillero.removeEventListener("click", this.GestorDisparo, false);
             casillero.removeEventListener("contextmenu", this.GestorBloqueo, false);
             casillero.addEventListener("contextmenu", function(e){e.preventDefault();}, false);
-            
+
             if(derrota && casillero.classList.contains("b"))
                 casillero.classList.add("bomba");
         }
