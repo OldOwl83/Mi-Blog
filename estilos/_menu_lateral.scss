@@ -7,8 +7,10 @@
     top: 40px;
     display: block;
     width: 16%;
-    margin-top: 50px;
-    margin-bottom: 150px;
+    margin: {
+        top: 50px;
+        bottom: 150px;
+    }
     box-sizing: border-box;
     z-index: 1;
 }
@@ -42,18 +44,20 @@
     margin: 0px auto;
     padding: 5px;
 
-    font-family: 'Arial', sans-serif;
-    font-size: 80%;
+    font: {
+        family: 'Arial', sans-serif;
+        size: 80%;
+    }
 }
 
 #zona_etiquetas
 {
     margin-top: 20px;
-    border: 1px solid var(--bordes_suaves_clr);
+    border: 1px solid $bordes_suaves_clr;
     border-bottom: none;
 }
 
-.etiquetas, .entradas
+@mixin etiq_entr
 {
     width: 100%;
     padding: 8px 10px 8px 16px;
@@ -63,14 +67,45 @@
     user-select: none;
     cursor: pointer;
 
-    border-bottom: 1px groove var(--bordes_suaves_clr);
+    border-bottom: 1px groove $bordes_suaves_clr;
 }
 
 .etiquetas
 {
+    @include etiq_entr;
+
     position: relative;
 
-    font-family: 'Comfortaa Regular', cursive;
+    font: {
+        family: 'Comfortaa', cursive;
+        weight: normal;
+    }
+
+    &:hover{
+        .linea.categ{
+            width: 102%;
+        }
+
+        .cont_entradas{
+            display: block;
+        }
+    }
+}
+
+.entradas
+{
+    @include etiq_entr;
+
+    font: {
+        family: 'Comfortaa', cursive;
+        weight: bold;
+    }
+
+    &:hover{
+        .linea.entr{
+            width: 102%;
+        }
+    }
 }
 
 .linea
@@ -80,31 +115,14 @@
     margin-left: 0px;
 
     transition: width 0.2s linear;
-}
 
-.etiquetas:hover .linea.categ
-{
-    width: 102%;
-}
+    &.categ{
+        background-color: $detalles_1_clr;
+    }
 
-.entradas
-{
-    font-family: 'Comfortaa Bold', cursive;
-}
-
-.entradas:hover .linea.entr
-{
-    width: 102%;
-}
-
-.linea.categ
-{
-    background-color: var(--detalles_1_clr);
-}
-
-.linea.entr
-{
-    background-color: var(--detalles_2_clr);
+    &.entr{
+        background-color: $detalles_2_clr;
+    }
 }
 
 .cont_entradas
@@ -117,15 +135,10 @@
     display: none;
     width: 100%;
 
-    border: 1px groove var(--bordes_suaves_clr);
+    border: 1px groove $bordes_suaves_clr;
     border-bottom: none;
 
     background-color: white;
-}
-
-.etiquetas:hover .cont_entradas
-{
-    display: block;
 }
 
 .texto

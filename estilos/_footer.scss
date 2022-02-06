@@ -9,8 +9,10 @@ footer
     align-items: center;
     justify-content: space-around;
 
-    font-family: 'Cantarell', sans-serif;
-    font-size: 80%;
+    font: {
+        family: 'Cantarell', sans-serif;
+        size: 80%;
+    }
     user-select: none;
 
     background-color: #222;
@@ -39,8 +41,10 @@ footer
 
 #slogan{
     width: 50%;
-    font-size: 1.2em;
-    font-weight: bold;
+    font: {
+        size: 1.2em;
+        weight: bold;
+    }
     color: #17c11e;
 }
 

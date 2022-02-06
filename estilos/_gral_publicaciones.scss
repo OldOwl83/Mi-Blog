@@ -2,10 +2,14 @@ p.publicaciones
 {
     margin: 10px 0;
 
-    font-family: 'Cantarell', sans-serif;
-    font-size: 120%;
-    text-align: justify;
-    text-indent: 40px;
+    font: {
+        family: 'Cantarell', sans-serif;
+        size: 120%;
+    }
+    text: {
+        align: justify;
+        indent: 40px;
+    }
     line-height: 1.4;
 }
 
@@ -16,28 +20,27 @@ p.publicaciones
     padding: 8px;
     width: 40%;
 
-    font-family: 'Arial', sans-serif;
-    font-size: 95%;
+    font: {
+        family: 'Arial', sans-serif;
+        size: 95%;
+    }
 
-
-    border: 3px solid var(--bordes_suaves_clr);
+    border: 3px solid $bordes_suaves_clr;
     background-color: #ebffd4;
-    box-shadow: 2px 2px 3px var(--bordes_suaves_clr);
-}
+    box-shadow: 2px 2px 3px $bordes_suaves_clr;
+    
+    ul{
+        list-style: none;
+        line-height: 1.8;
+    }
 
-.fichas_t ul
-{
-    list-style: none;
-    line-height: 1.8;
-}
+    a{
+        color: blue;
+    }
 
-.fichas_t a
-{
-    color: blue;
-}
-
-.fichas_t .material-icons{
-    font-size: 130%;
+    .material-icons{
+        font-size: 130%;
+    }
 }
 
 span.imagenes
@@ -46,20 +49,23 @@ span.imagenes
     margin-bottom: 10px;
     padding: 4px;
 
-    box-shadow: 0 0 3px 2px var(--detalles_2_masclr);
+    box-shadow: 0 0 3px 2px $detalles_2_masclr;
 
-    font-size: 70%;
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    text-indent: 0;
+    font: {
+        size: 70%;
+        family: 'Arial', sans-serif;
+    }
+    text: {
+        align: center;
+        indent: 0;
+    }
     cursor: pointer;
 
     transition: filter 0.3s ease-in, width 0.3s linear;
-}
 
-span.imagenes:hover
-{
-    filter: sepia(90%);
+    &:hover{
+        filter: sepia(90%);
+    }
 }
 
 .imagenes.expand
@@ -73,16 +79,17 @@ ul.publicaciones
 {
     margin: 10px 0 10px 18px;
 
-    font-family: 'Cantarell', sans-serif;
-    font-size: 120%;
+    font: {
+        family: 'Cantarell', sans-serif;
+        size: 120%;
+    }
     text-align: justify;
     list-style-position: outside;
-}
 
-ul.publicaciones li
-{
-    margin-bottom: 16px;
-    padding-left: 30px;
+    li{
+        margin-bottom: 16px;
+        padding-left: 30px;
+    }
 }
 
 span.subtitulos
@@ -110,24 +117,21 @@ details.publicaciones
 
     background-color: #aaa;
     border: 2px dotted black;
-}
 
-details.publicaciones:hover
-{
-    background-color: #888;
-}
+    &:hover{
+        background-color: #888;
+    }
 
-details.publicaciones summary
-{
-    font-size: 94%;
-    font-weight: bold;
-}
+    summary{
+        font-size: 94%;
+        font-weight: bold;
+    }
 
-details.publicaciones p, details.publicaciones a
-{
-    margin: 5px;
-    font-size: 90%;
-    color: #00a;
+    p, a{
+        margin: 5px;
+        font-size: 90%;
+        color: #00a;
+    }
 }
 
 .publicaciones img
@@ -139,9 +143,8 @@ details.publicaciones p, details.publicaciones a
 {
     color: #99581c;
     cursor: pointer;
-}
 
-.enlace_publ:hover
-{
-    color: var(--detalles_2_masclr);
+    &:hover{
+        color: $detalles_2_masclr;
+    }
 }

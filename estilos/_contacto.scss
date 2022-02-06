@@ -1,12 +1,30 @@
-#form_contacto input, #form_contacto textarea
+#form_contacto
 {
-    padding: 2px 8px;
-}
+    input{
+        padding: 2px 8px;
 
-#form_contacto input[type="text"]
-{
-    width: 40%;
-    margin: 26px 50px 0;
+        &[type="text"]{
+            width: 40%;
+            margin: 26px 50px 0;
+        }
+
+        &[type="email"]{
+            width: 100%;
+        }
+
+        &[type="submit"]{
+            display: block;
+            width: 12%;
+            margin: 20px 50px;
+            padding: 7px 10px;
+        }
+    }
+
+    textarea{
+        padding: 2px 8px;
+        width: 52%;
+        margin: 20px 50px 0;
+    }
 }
 
 #cont_email
@@ -15,30 +33,10 @@
     margin: 20px 50px 0;
 }
 
-#form_contacto input[type="email"]
-{
-    width: 100%;
-}
-
 #aclaracion
 {
     margin-top: 3px;
     font-family: 'Arial', sans-serif;
     font-size: 70%;
     text-align: justify;
-}
-
-#form_contacto textarea
-{
-    width: 52%;
-    margin: 20px 50px 0;
-}
-
-#form_contacto input[type="submit"]
-{
-    display: block;
-    width: 12%;
-    margin: 20px 50px;
-    padding: 7px 10px;
-
 }

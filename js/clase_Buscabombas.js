@@ -384,7 +384,7 @@ class Buscabombas
     //Evaluación de triunfo; lleva una cuenta de las casillas disparadas con éxito
     EvaluarTriunfo()
     {
-        if(!(--this.contadorTocados))
+        if(!($this.contadorTocados))
         {
             this.DesactivacionTableroDOM();
 

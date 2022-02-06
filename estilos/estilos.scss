@@ -1,17 +1,26 @@
-@use 'acerca_de';
-@use 'batalla_naval';
-@use 'black_jack';
-@use 'buscabombas';
-@use 'c_gestor';
-@use 'calculin';
-@use 'contacto';
-@use 'fonts';
-@use 'footer';
-@use 'generales_movil';
-@use 'generales';
-@use 'gral_publicaciones';
-@use 'logprop';
-@use 'menu_lateral';
-@use 'menu_superior';
-@use 'mi_blog';
-@use 'subclases_py';
+$fondo_claro_clr: #ffefcf;
+$detalles_fondo_claro: #eebf7f;
+$fondo_oscuro_clr: orange;
+$detalles_1_clr: #8c00d8; /*violeta*/
+$detalles_1_masclr: #c18bff; /*violeta*/
+$detalles_2_clr: orangered; /*naranja*/
+$detalles_2_masclr: #c0824a; /*naranja*/
+$bordes_suaves_clr: #999; /*gris*/
+
+@import 'acerca_de';
+@import 'batalla_naval';
+@import 'black_jack';
+@import 'buscabombas';
+@import 'c_gestor';
+@import 'calculin';
+@import 'contacto';
+@import 'fonts';
+@import 'footer';
+@import 'generales';
+@import 'generales_movil';
+@import 'gral_publicaciones';
+@import 'logprop';
+@import 'menu_lateral';
+@import 'menu_superior';
+@import 'mi_blog';
+@import 'subclases_py';

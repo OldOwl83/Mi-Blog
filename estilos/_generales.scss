@@ -1,27 +1,3 @@
-@font-face
-{
-        font-family: 'Comfortaa Bold';
-        src: url('../fuentes/Comfortaa-Bold.ttf');
-}
-
-@font-face
-{
-    font-family: 'Comfortaa Regular';
-    src: url('../fuentes/Comfortaa-Regular.ttf');
-}
-
-:root
-{
-    --fondo_claro_clr: #ffefcf;
-    --detalles_fondo_claro: #eebf7f;
-    --fondo_oscuro_clr: orange;
-    --detalles_1_clr: #8c00d8; /*violeta*/
-    --detalles_1_masclr: #c18bff; /*violeta*/
-    --detalles_2_clr: orangered; /*naranja*/
-    --detalles_2_masclr: #c0824a; /*naranja*/
-    --bordes_suaves_clr: #999; /*gris*/
-}
-
 *
 {
     margin: 0;
@@ -43,7 +19,7 @@ body
     max-width: 1200px;
     margin: auto;
 
-    background: linear-gradient(135deg, white 500px, var(--fondo_claro_clr) 1000px);
+    background: linear-gradient(135deg, white 500px, $fondo_claro_clr 1000px);
 }
 
 @media screen and (min-width: 1601px)
@@ -77,23 +53,29 @@ header
 
     user-select: none;
     background: linear-gradient(35deg, #c293ec 40%, beige 100% );
-    border: 1px solid var(--bordes_suaves_clr);
-}
+    border: 1px solid $bordes_suaves_clr;
 
-header img
-{
-    display: block;
-    margin: 0 auto 15px;
-    width: 94%;
+    img{
+        display: block;
+        margin: 0 auto 15px;
+        width: 94%;
+    }
 }
 
 h1
 {
-    margin-left: 10%;
-    margin-bottom: 18px;
-    font-family: 'Comfortaa Bold', cursive;
-    font-size: 280%;
-    font-variant: small-caps;
+    margin: {
+        left: 10%;
+        bottom: 18px;
+    }
+
+    font: {
+        family: 'Comfortaa', cursive;
+        weight: bold;
+        size: 280%;
+        variant: small-caps;
+    }
+
     letter-spacing: 4px;
     text-shadow: 3px 3px 2px #555;
 }
@@ -101,8 +83,10 @@ h1
 h2
 {
     margin-left: 20%;
-    font-family: 'Cantarell', sans-serif;
-    font-size: 140%;
+    font: {
+        family: 'Cantarell', sans-serif;
+        size: 140%;    
+    }
     color: white;
     text-shadow: 2px 2px 1px darkorange, -1px -1px 1px black;
     letter-spacing: 2px;
@@ -111,20 +95,26 @@ h2
 h3
 {
     margin: 26px 15px;
-    font-family: 'Comfortaa Bold', cursive;
-    font-size: 200%;
-    font-variant: small-caps;
-    color: var(--detalles_2_clr);
+    font: {
+        family: 'Comfortaa', cursive;
+        weight: bold;
+        size: 200%;
+        variant: small-caps;
+    }
+    color: $detalles_2_clr;
     letter-spacing: 1px;
 }
 
 h4
 {
     margin: 50px 20px 16px;
-    font-family: 'Comfortaa Bold', cursive;
-    font-size: 130%;
-    font-variant: small-caps;
-    color: var(--detalles_1_clr);
+    font: {
+        family: 'Comfortaa', cursive;
+        weight: bold;
+        size: 130%;
+        variant: small-caps;
+    }
+    color: $detalles_1_clr;
     letter-spacing: 1px;
 }
 
@@ -134,8 +124,10 @@ h5
     justify-content: center;
     margin: 16px;
     padding-bottom: 10px;
-    font-family: 'Arial', sans-serif;
-    font-size: 130%;
+    font: {
+        family: 'Arial', sans-serif;
+        size: 130%;
+    }
     color: black;
     border-bottom: 1px solid black;
 }
